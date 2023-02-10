@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  background: #1f2235;
+  background-image: linear-gradient(#352667, #4b3077);;
   z-index: 1;
 }
 
@@ -16,7 +16,7 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  background: #eae6f0;
+  background: #efd7f0;
   z-index: 1;
 }
 
@@ -24,27 +24,31 @@
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #3d5af1 transparent #3d5af1 transparent;
+  border-color: #F1709E transparent #F1709E transparent;
   border-radius: 50%;
   animation: spin-anim 1.2s linear infinite;
   margin-right: 16px;
 }
 
 .display-message-dark {
-  font-size: larger;
-  font-weight: 900;
-  color: white;
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: #F1709E;
 }
 
 .display-message-light {
-  font-size: larger;
-  font-weight: 900;
-  color: rgb(17, 0, 0);
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: #000000;
 }
+
 @keyframes spin-anim {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

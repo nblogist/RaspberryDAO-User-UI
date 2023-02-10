@@ -9,7 +9,7 @@
     margin-right: 36px;
 }
 
-.switchinput {
+.switchinputlight, .switchinputdark {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,7 +23,7 @@
     height: inherit;
     font-size: 10px;
     text-transform: uppercase;
-    background: #4D3BCE;
+    background-image: linear-gradient(#352667, #4b3077);;
     border-radius: inherit;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
     box-sizing: content-box;
@@ -55,16 +55,16 @@
     opacity: 0;
 }
 
-.switchinput:checked~.switchlabel {
+.switchinputlight:checked~.switchlabel {
     background: white;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.switchinput:checked~.switchlabel:before {
+.switchinputlight:checked~.switchlabel:before {
     opacity: 0;
 }
 
-.switchinput:checked~.switchlabel:after {
+.switchinputlight:checked~.switchlabel:after {
     opacity: 1;
 }
 
@@ -80,7 +80,7 @@
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-.switchinput:checked~.switchhandle {
+.switchinputlight:checked~.switchhandle {
     left: 32px;
     background-image: -webkit-linear-gradient(top, #4d3bce 40%, #4d3bce);
 }
@@ -120,7 +120,7 @@
         /* margin-right: 10px; */
     }
 
-    .switchinput:checked~.switchhandle {
+    .switchinputlight:checked~.switchhandle {
         left: 23px;
         background-image: -webkit-linear-gradient(top, #4d3bce 40%, #4d3bce);
     }

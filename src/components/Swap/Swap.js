@@ -10,10 +10,15 @@ import {
   useContractWrite,
   usePrepareContractWrite,
 } from "wagmi";
-import raspberrydao_pic_3 from "../../images/raspberrydao_pic_3.jpg";
+import raspberrydao_pic_1 from "../../images/Homepage/Slider/1.svg";
+import raspberrydao_pic_2 from "../../images/Homepage/Slider/4.svg";
+import raspberrydao_pic_3 from "../../images/Homepage/Slider/5.svg";
+import raspberrydao_pic_4 from "../../images/Homepage/Slider/6.svg";
 import styles from "./Swap.module.scss";
-import bitcoinimg from "../../images/blockchain-icon.svg";
-import GodwokenImg from "../../images/godwoken-logo-2.svg";
+import bitcoinimg from "../../images/Swap/blockchain-icon.svg";
+import GodwokenImg from "../../images/Swap/godwoken-logo-1.svg";
+import daologo from "../../images/Swap/SwapLogoW.svg";
+import dalogoD from "../../images/Swap/SwapLogoD.svg";
 import Popup from "../Popup/Popup";
 import { ThemeContext } from "../../App";
 import Catalogue from "../Catalogue/Catalogue";
@@ -27,7 +32,6 @@ import {
 import LoadingSpinner from "../spinner/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
 import { BsQuestionCircle } from "react-icons/bs";
-import ReactTooltip from "react-tooltip";
 
 const GODWOKEN_RPC_URL = "https://godwoken-testnet-v1.ckbapp.dev";
 const godwokenProvider = new ethers.providers.JsonRpcProvider(GODWOKEN_RPC_URL);
@@ -50,6 +54,17 @@ function Swap() {
     tokenUri: { gateway: "" },
     hasSelected: false,
   });
+  let image_url = "";
+  try {
+    if (selected.media.length != 0) {
+      image_url = selected.media[0].gateway;
+    } else {
+      image_url = sample;
+    }
+  } catch (error) {
+    //console.log("Error handle", error);
+  }
+
   const [index, setIndex] = useState("0.0");
   const [isApproved, setApproval] = useState(false);
 
@@ -79,13 +94,36 @@ function Swap() {
     signerOrProvider: godwokenProvider,
   });
 
+  const [picindex, setPicIndex] = useState(0);
+  let l = [
+    raspberrydao_pic_1,
+    raspberrydao_pic_2,
+    raspberrydao_pic_3,
+    raspberrydao_pic_4,
+  ];
+
+  useEffect(() => {
+    let intervalId = 0;
+    const Changing = () => {
+      intervalId = setInterval(() => {
+        setPicIndex((prevIndex) => {
+          return prevIndex + 1 < l.length ? prevIndex + 1 : 0;
+        });
+      }, 1000);
+    };
+    Changing();
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [l, picindex]);
+
   useEffect(() => {
     async function fetch() {
       const approveFlag = await contract.isApprovedForAll(
         address,
         POLYGON_BRIDGE_ADDRESS
       );
-      console.log("Apprval flag", approveFlag);
+      //console.log("Apprval flag", approveFlag);
       setApproval(approveFlag);
     }
     fetch();
@@ -94,7 +132,7 @@ function Swap() {
   useEffect(() => {
     async function fetch() {
       const totalSupply = await godwokenContract.totalSupply();
-      console.log("Total Sypply", Number(totalSupply.toString()));
+      // console.log("Total Sypply", Number(totalSupply.toString()));
       const tokenId = Number(totalSupply.toString()) + 1;
       const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId}`;
       const Uri = Promise.resolve(rawUri);
@@ -107,7 +145,7 @@ function Swap() {
           "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
         );
         let metadata = axios.get(cleanUri).catch(function (error) {
-          console.log(error.toJSON());
+          // console.log(error.toJSON());
         });
         return metadata;
       });
@@ -121,7 +159,6 @@ function Swap() {
             "ipfs://",
             "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
           );
-          console.log("Image", image);
 
           Promise.resolve(owner).then((value) => {
             let ownerW = value;
@@ -162,14 +199,14 @@ function Swap() {
       ethers.utils.parseEther(gasFees),
       "71401",
       selected.tokenId,
-      selected.tokenUri.gateway,
+      selected.tokenUri?.gateway,
     ],
     overrides: {
       value: ethers.utils.parseEther(totalFees.toString()),
       gasLimit: "100000",
     },
     onSuccess(data) {
-      console.log("Success", data);
+      // console.log("Success", data);
     },
   });
   const swapWrite = useContractWrite(config);
@@ -184,9 +221,9 @@ function Swap() {
           navigate("/profile");
           clearTimeout(timerId);
         }, 1000);
-        console.log("Data inner", data);
+        // console.log("Data inner", data);
       } catch (error) {
-        console.log("Error catch", error);
+        // console.log("Error catch", error);
         setIsLoading(false);
         setSwaptx(false);
       } finally {
@@ -209,10 +246,10 @@ function Swap() {
       gasLimit: "100000",
     },
     onSuccess(data) {
-      console.log("Success Approval", data);
+      // console.log("Success Approval", data);
     },
     onError(error) {
-      console.log("Error", error);
+      // console.log("Error", error);
     },
   });
   const approvalWrite = useContractWrite(approveContractWrite.config);
@@ -223,9 +260,9 @@ function Swap() {
       try {
         const data = await approvalWrite.data.wait();
         // window.location.reload(false);
-        console.log("Data inner", data);
+        // console.log("Data inner", data);
       } catch (error) {
-        console.log("Error catch", error);
+        // console.log("Error catch", error);
         setIsLoading(false);
         seApprovaltx(false);
       } finally {
@@ -235,6 +272,10 @@ function Swap() {
     }
     fetch();
   }, [approvalWrite.data]);
+
+  const Truncate = (str) => {
+    return str.length > 40 ? str.substring(0, 37) + "..." : str;
+  };
 
   return (
     <div className={theme === "light" ? styles.light : styles.dark}>
@@ -259,170 +300,352 @@ function Swap() {
             />
           ) : null}
           <div className={styles.swappage}>
-            <div className={styles.heading}>Swap</div>
+            <div className={styles.heading}>
+              Trade In Your NFTs With Raspberry DAO
+            </div>
+            <div className={styles.subheading}>
+              Trades on Raspberry DAO are final. Once the transaction is signed,
+              your old NFT will be burned and you will receive an all new
+              generative-art NFT!
+            </div>
             <div className={styles.swapbox}>
-              <div className={styles.leftswapbox}>
-                <div className={styles.from}>From</div>
-                <div className={styles.selectNFT}>
-                  <img
-                    src={bitcoinimg}
-                    alt="Bitcoin"
-                    className={styles.bitcoinimg}
-                  ></img>
-                  <select
-                    name="choosefrom"
-                    id="dropdown"
-                    className={styles.select}
-                    defaultValue={"DEFAULT"}
-                    // onChange={event => setBlockChain(event.target.value)}
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      {" "}
-                      Choose a BlockChain
-                    </option>
-                    {chain ? <option value="Polygon">{chain.name}</option> : ""}
-                    {/* <option value='Ethereum' onClick={() => switchNetwork?.(1)}>Ethereum</option>
+              <div className={styles.upperswapbox}>
+                <div className={styles.leftupper}>
+                  <div className={styles.from}>From</div>
+                  <div className={styles.selectNFT}>
+                    <img
+                      src={bitcoinimg}
+                      alt="Bitcoin"
+                      className={styles.bitcoinimg}
+                    ></img>
+                    <select
+                      name="choosefrom"
+                      id="dropdown"
+                      className={styles.select}
+                      defaultValue={"DEFAULT"}
+                      // onChange={event => setBlockChain(event.target.value)}
+                      required
+                    >
+                      {/* <option value="" disabled selected hidden>
+                        Choose a BlockChain
+                      </option> */}
+                      {chain ? (
+                        <option value="Polygon">{chain.name}</option>
+                      ) : (
+                        ""
+                      )}
+                      {/* <option value='Ethereum' onClick={() => switchNetwork?.(1)}>Ethereum</option>
                             <option value='XDAI'>XDAI</option> */}
-                  </select>
+                    </select>
+                  </div>
                 </div>
-                {swap ? (
-                  <div className={styles.cardinfo}>
-                    <div className={styles.card}>
-                      <div className={styles.simage}>
-                        <img
-                          src={selected.media[0].gateway}
-                          alt="Sample"
-                          className={styles.sampleimage}
-                        ></img>
-                      </div>
-                      <div className={styles.aboutcard}>
-                        <div className={styles.cardhead}>
-                          {" "}
-                          {selected.title}{" "}
-                        </div>
-                        <div
-                          className={styles.edit}
-                          onClick={() => setOpen(true)}
-                        >
-                          Choose A Different NFT
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
-                {!swap ? (
-                  <div className={styles.choose} onClick={() => setOpen(true)}>
-                    <button className={styles.choosenft}>Choose A NFT</button>
-                  </div>
-                ) : null}
-                <div className={styles.amountandbalance}>
-                  {selected.hasSelected ? (
-                    <div className={styles.amount}>1</div>
-                  ) : (
-                    <div className={styles.amount}>0</div>
-                  )}
-                  <div className={styles.unitandbalance}>
-                    <div className={styles.unit}> NFT </div>
+                <div className={styles.middleupper}>
+                  <img src={daologo}></img>
+                </div>
+                <div className={styles.rightupper}>
+                  <div className={styles.to}>To</div>
+                  <div className={styles.inputNFT}>
+                    <img
+                      src={GodwokenImg}
+                      alt="Ethereum"
+                      className={styles.bitcoinimg}
+                    ></img>
+                    <input
+                      name="tonft"
+                      className={styles.input}
+                      value="GODWOKEN"
+                      disabled
+                    ></input>
                   </div>
                 </div>
               </div>
-              <div className={swap ? styles.swapbuttonopen : styles.swapbutton}>
-                {swapWrite.write && isApproved ? (
-                  <button
-                    className={styles.buttonswap}
-                    disabled={!swapWrite.write}
-                    onClick={() => swapWrite.write?.()}
-                  >
-                    Swap
-                  </button>
-                ) : (
-                  ""
-                )}
-                {approvalWrite.write && !isApproved ? (
-                  <button
-                    className={styles.buttonswap}
-                    disabled={!approvalWrite.write}
-                    onClick={() => approvalWrite.write?.()}
-                  >
-                    Approve
-                  </button>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className={styles.rightswapbox}>
-                <div className={styles.to}>To</div>
-                <div className={styles.inputNFT}>
-                  <img
-                    src={GodwokenImg}
-                    alt="Ethereum"
-                    className={styles.bitcoinimg}
-                  ></img>
-                  <input
-                    name="tonft"
-                    className={styles.input}
-                    value="GODWOKEN"
-                    disabled
-                  ></input>
-                </div>
-                {swap ? (
-                  <div className={styles.cardinfo}>
-                    <div className={styles.card}>
-                      <div className={styles.simage}>
-                        <img
-                          src={probableMintingNFT}
-                          alt="Sample"
-                          className={styles.sampleimage}
-                        ></img>
-                      </div>
-                      <ReactTooltip id="registerTip" effect="solid">
-                        Most probably you will be minted this NFT on Godowken,
-                        but there's a slight chance you will get the next NFT in
-                        the collection on Godowken, so mint it right away!
-                      </ReactTooltip>
-                      <div className={styles.aboutcard}>
-                        <div className={styles.cardhead}>
-                          {" "}
-                          {probableGodwokenTitle}{" "}
+              <div className={styles.middleswapbox}>
+                <div className={styles.leftmiddle}>
+                  {swap ? (
+                    <div className={styles.cardinfo}>
+                      <div className={styles.card}>
+                        <div className={styles.simage}>
+                          <img
+                            src={image_url}
+                            alt="Sample"
+                            className={styles.leftsampleimage}
+                          ></img>
                         </div>
-                        {/* <div
-                          className={styles.edit}
-                          onClick={() => setOpen(true)}
-                        >
-                          Choose A Different NFT
-                        </div> */}
-                        <div style={{cursor:"pointer"}}>
-                          <BsQuestionCircle
-                            fontSize="1.5em"
-                            data-tip
-                            data-for="registerTip"
-                            data-place="top"
-                            data-padding="16px"
-                            data-class={styles.tooltip}
-                            data-border={true}
-                            data-multiline={true}
-                          />
+                        <div className={styles.aboutcard}>
+                          <div className={styles.cardhead}>
+                            {Truncate(selected.title)}
+                          </div>
+                          <div
+                            className={styles.edit}
+                            onClick={() => setOpen(true)}
+                          >
+                            Choose a different NFT
+                          </div>
                         </div>
                       </div>
                     </div>
+                  ) : null}
+                  {!swap ? (
+                    <div
+                      className={styles.choose}
+                      onClick={() => setOpen(true)}
+                    >
+                      <button className={styles.choosenft}>Choose a NFT</button>
+                    </div>
+                  ) : null}
+                </div>
+                <div className={styles.rightmiddle}>
+                  {swap ? (
+                    <div className={styles.cardinfo}>
+                      <div className={styles.card}>
+                        <div className={styles.simage}>
+                          <img
+                            src={l[picindex]}
+                            alt="Sample"
+                            className={styles.sampleimage}
+                          ></img>
+                          <div className={styles.question}>
+                            <BsQuestionCircle
+                              fontSize="3.5em"
+                              data-tip
+                              data-for="registerTip"
+                              data-place="top"
+                              data-padding="16px"
+                              data-class={styles.tooltip}
+                              data-border={true}
+                              data-multiline={true}
+                            />
+                          </div>
+                          <div className={styles.tooltip}>
+                            Your NFT will be Randomly Generated.
+                          </div>
+                        </div>
+                        <div className={styles.aboutcard}>
+                          <div className={styles.cardhead}>
+                            {probableGodwokenTitle}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+              <div className={styles.lowerswapbox}>
+                <div className={styles.leftlower}>
+                  <div className={styles.amountandbalance}>
+                    {selected.hasSelected ? (
+                      <div className={styles.amount}>1</div>
+                    ) : (
+                      <div className={styles.amount}>0</div>
+                    )}
+                    <div className={styles.unitandbalance}>
+                      <div className={styles.unit}> NFT </div>
+                    </div>
                   </div>
-                ) : null}
-                <div
-                  className={
-                    swap
-                      ? styles.amountandbalancerightopen
-                      : styles.amountandbalanceright
-                  }
-                >
-                  {selected.hasSelected ? (
-                    <div className={styles.amount}>1</div>
+                </div>
+                <div className={styles.middlelower}>
+                  <div className={styles.swapbutton}>
+                    {swapWrite.write && isApproved ? (
+                      <button
+                        className={styles.buttonswap}
+                        disabled={!swapWrite.write}
+                        onClick={() => swapWrite.write?.()}
+                      >
+                        Swap
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    {approvalWrite.write && !isApproved ? (
+                      <button
+                        className={styles.buttonswap}
+                        disabled={!approvalWrite.write}
+                        onClick={() => approvalWrite.write?.()}
+                      >
+                        Approve
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+                <div className={styles.rightlower}>
+                  <div className={styles.amountandbalance}>
+                    {selected.hasSelected ? (
+                      <div className={styles.amount}>1</div>
+                    ) : (
+                      <div className={styles.amount}>0</div>
+                    )}
+                    <div className={styles.unitandbalance}>
+                      <div className={styles.unit}> NFT </div>
+                      {/* <div className={styles.balance}>Balance - 10.72</div> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={styles.mobileswapbox}>
+              <div className={styles.mobileupperswapbox}>
+                <div className={styles.topupper}>
+                  <div className={styles.from}>From</div>
+                  <div className={styles.selectNFT}>
+                    <img
+                      src={bitcoinimg}
+                      alt="Bitcoin"
+                      className={styles.bitcoinimg}
+                    ></img>
+                    <select
+                      name="choosefrom"
+                      id="dropdown"
+                      className={styles.select}
+                      defaultValue={"DEFAULT"}
+                      // onChange={event => setBlockChain(event.target.value)}
+                      required
+                    >
+                      {chain ? (
+                        <option value="Polygon">{chain.name}</option>
+                      ) : (
+                        ""
+                      )}
+                    </select>
+                  </div>
+                </div>
+                <div className={styles.middleupper}>
+                  {swap ? (
+                    <div className={styles.cardinfo}>
+                      <div className={styles.card}>
+                        <div className={styles.simage}>
+                          <img
+                            src={image_url}
+                            alt="Sample"
+                            className={styles.leftsampleimage}
+                          ></img>
+                        </div>
+                        <div className={styles.aboutcard}>
+                          <div className={styles.cardhead}>
+                            {Truncate(selected.title)}
+                          </div>
+                          <div
+                            className={styles.edit}
+                            onClick={() => setOpen(true)}
+                          >
+                            Choose a different NFT
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                  {!swap ? (
+                    <div
+                      className={styles.choose}
+                      onClick={() => setOpen(true)}
+                    >
+                      <button className={styles.choosenft}>Choose a NFT</button>
+                    </div>
+                  ) : null}
+                </div>
+                <div className={styles.lowerupper}>
+                  <div className={styles.amountandbalance}>
+                    {selected.hasSelected ? (
+                      <div className={styles.amount}>1</div>
+                    ) : (
+                      <div className={styles.amount}>0</div>
+                    )}
+                    <div className={styles.unitandbalance}>
+                      <div className={styles.unit}> NFT </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.mobilemiddleswapbox}>
+                <div className={styles.swapbutton}>
+                  {swapWrite.write && isApproved ? (
+                    <button
+                      className={styles.buttonswap}
+                      disabled={!swapWrite.write}
+                      onClick={() => swapWrite.write?.()}
+                    >
+                      Swap
+                    </button>
                   ) : (
-                    <div className={styles.amount}>0</div>
+                    ""
                   )}
-                  <div className={styles.unitandbalance}>
-                    <div className={styles.unit}> NFT </div>
-                    {/* <div className={styles.balance}>Balance - 10.72</div> */}
+                  {approvalWrite.write && !isApproved ? (
+                    <button
+                      className={styles.buttonswap}
+                      disabled={!approvalWrite.write}
+                      onClick={() => approvalWrite.write?.()}
+                    >
+                      Approve
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+              <div className={styles.mobilelowerswapbox}>
+                <div className={styles.toplower}>
+                  <div className={styles.to}>To</div>
+                  <div className={styles.inputNFT}>
+                    <img
+                      src={GodwokenImg}
+                      alt="Ethereum"
+                      className={styles.bitcoinimg}
+                    ></img>
+                    <input
+                      name="tonft"
+                      className={styles.input}
+                      value="GODWOKEN"
+                      disabled
+                    ></input>
+                  </div>
+                </div>
+                <div className={styles.middlelower}>
+                  {swap ? (
+                    <div className={styles.cardinfo}>
+                      <div className={styles.card}>
+                        <div className={styles.simage}>
+                          <img
+                            src={l[picindex]}
+                            alt="Sample"
+                            className={styles.sampleimage}
+                          ></img>
+                          <div className={styles.question}>
+                            <BsQuestionCircle
+                              fontSize="3.5em"
+                              data-tip
+                              data-for="registerTip"
+                              data-place="top"
+                              data-padding="16px"
+                              data-class={styles.tooltip}
+                              data-border={true}
+                              data-multiline={true}
+                            />
+                          </div>
+                          <div className={styles.tooltip}>
+                            Your NFT will be Randomly Generated.
+                          </div>
+                        </div>
+                        <div className={styles.aboutcard}>
+                          <div className={styles.cardhead}>
+                            {probableGodwokenTitle}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                <div className={styles.lowerlower}>
+                  <div className={styles.amountandbalance}>
+                    {selected.hasSelected ? (
+                      <div className={styles.amount}>1</div>
+                    ) : (
+                      <div className={styles.amount}>0</div>
+                    )}
+                    <div className={styles.unitandbalance}>
+                      <div className={styles.unit}> NFT </div>
+                      {/* <div className={styles.balance}>Balance - 10.72</div> */}
+                    </div>
                   </div>
                 </div>
               </div>

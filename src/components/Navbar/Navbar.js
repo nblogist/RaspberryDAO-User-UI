@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-import logoDark from "../../images/logoDark.svg";
-import logoWhite from "../../images/logoWhite.svg";
+import logo from "../../images/logo.svg";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount, useNetwork } from "wagmi";
 import Toggle from "../../utils/Toggle/Toggle";
@@ -10,7 +9,6 @@ import hamburger from "../../images/Hamburger.svg";
 import hamburgerdark from "../../images/HamburgerDark.svg";
 import close from "../../images/close.svg";
 import { ThemeContext } from "../../App";
-import raspberrylogo from "../../images/raspberrylogo.svg";
 
 function Navbar() {
   const { chain } = useNetwork();
@@ -27,54 +25,61 @@ function Navbar() {
         <div className={styles.left}>
           <NavLink to="/">
             <div className={styles.logo}>
-              {theme === "light" ? (
+              <img src={logo} alt="Logo" />
+              {/* {theme === "light" ? (
                 <img src={raspberrylogo} alt="Logo" />
               ) : (
                 <img src={raspberrylogo} alt="Logo" />
-              )}
+              )} */}
             </div>
           </NavLink>
-          <div className={styles.content}>
-            <ul className={styles.menulinks}>
+        </div>
+        <div className={styles.content}>
+          <ul className={styles.menulinks}>
+            <li>
+              <NavLink
+                to="/"
+                className={() =>
+                  nav.pathname === '/' ? `${styles.navlinks} ${styles.active}` : `${styles.navlinks}`
+                }
+              >
+                Home
+                <div></div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/profile"
+                className={() =>
+                  nav.pathname.includes('/profile')
+                    ? `${styles.navlinks} ${styles.active}`
+                    : `${styles.navlinks}`
+                }
+              >
+                My NFTs
+                <div></div>
+              </NavLink>
+            </li>
+            {isConnected && chain.network !== "Godwoken Testnet" ? (
               <li>
                 <NavLink
-                  to="/"
-                  className={(nav) =>
-                    nav.isActive ? `${styles.navlinks} ` : `${styles.navlinks}`
-                  }
-                >
-                  Home
-                  <div></div>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/profile"
-                  className={(nav) =>
-                    nav.isActive ? `${styles.navlinks}` : `${styles.navlinks}`
-                  }
-                >
-                  My NFT's
-                  <div></div>
-                </NavLink>
-              </li>
-              {isConnected && chain.network !== "Godwoken Testnet" ? (
-                <li>
-                  <NavLink
-                    to="/marketplace"
-                    className={(nav) =>
-                      nav.isActive ? `${styles.navlinks}` : `${styles.navlinks}`
-                    }
-                  >
-                    Swap NFT
-                    <div></div>
-                  </NavLink>
-                </li>
-              ) : (
-                ""
-              )}
 
-              {/* <li>
+                  to="/marketplace"
+                  className={() =>
+                    nav.pathname === '/marketplace'
+                      ? `${styles.navlinks} ${styles.active}`
+                      : `${styles.navlinks}`
+                  }
+                >
+                  Swap NFT
+                  <div></div>
+                </NavLink>
+              </li>
+            ) : (
+              ""
+            )}
+
+            {/* <li>
                 <NavLink
                   to="/activity"
                   className={(nav) =>
@@ -87,22 +92,22 @@ function Navbar() {
                   <div></div>
                 </NavLink>
               </li> */}
-            </ul>
-          </div>
+          </ul>
         </div>
         <div className={styles.right}>
           <div className={styles.toggle}>
             <Toggle setStatus={toggleTheme} status={theme} />
           </div>
-          <div style={{ color: "#4D3BCE" }}>
+          <div style={{ color: "#F1709E" }}>
             <ConnectButton />
           </div>
           <div className={styles.hamburger} onClick={() => setMobileOpen(true)}>
-            {theme === "light" ? (
+            <img src={hamburger} alt="Hamburger"></img>
+            {/* {theme === "light" ? (
               <img src={hamburgerdark} alt="Hamburger"></img>
             ) : (
               <img src={hamburger} alt="Hamburger"></img>
-            )}
+            )} */}
           </div>
         </div>
       </div>
@@ -114,21 +119,12 @@ function Navbar() {
           <div className={styles.mobileleft}>
             <div className={styles.mobilelogo}>
               <NavLink to="/">
-                {theme === "light" ? (
-                  <img
-                    className={styles.mobilelogoimage}
-                    onClick={() => setMobileOpen(false)}
-                    src={logoWhite}
-                    alt=""
-                  />
-                ) : (
-                  <img
-                    className={styles.mobilelogoimage}
-                    onClick={() => setMobileOpen(false)}
-                    src={logoDark}
-                    alt=""
-                  />
-                )}
+                <img
+                  className={styles.mobilelogoimage}
+                  onClick={() => setMobileOpen(false)}
+                  src={logo}
+                  alt=""
+                />
               </NavLink>
             </div>
             <div className={styles.mobilecontent}>
@@ -136,8 +132,8 @@ function Navbar() {
                 <li onClick={() => setMobileOpen(false)}>
                   <NavLink
                     to="/"
-                    className={(nav) =>
-                      nav.isActive
+                    className={() =>
+                      nav.pathname === "/"
                         ? `${styles.navlinks} ${styles.active}`
                         : `${styles.navlinks}`
                     }
@@ -148,52 +144,36 @@ function Navbar() {
                 </li>
                 <li onClick={() => setMobileOpen(false)}>
                   <NavLink
+
                     to="/profile"
-                    className={(nav) =>
-                      nav.isActive
+                    className={() =>
+                      nav.pathname.includes('/profile')
                         ? `${styles.navlinks} ${styles.active}`
                         : `${styles.navlinks}`
                     }
                   >
-                    Dashboard
+                    My NFTs
                     <div></div>
                   </NavLink>
                 </li>
-                <li onClick={() => setMobileOpen(false)}>
-                  <NavLink
-                    to="/marketplace"
-                    className={(nav) =>
-                      nav.isActive
-                        ? `${styles.navlinks} ${styles.active}`
-                        : `${styles.navlinks}`
-                    }
-                  >
-                    Bridge NFT
-                    <div></div>
-                  </NavLink>
-                </li>
-                {/* <li onClick={() => setMobileOpen(false)}>
-                  <NavLink
-                    to="/activity"
-                    className={(nav) =>
-                      nav.isActive
-                        ? `${styles.navlinks} ${styles.active}`
-                        : `${styles.navlinks}`
-                    }
-                  >
-                    Activities
-                    <div></div>
-                  </NavLink>
-                </li> */}
-                {/* <NavLink to="/profile" onClick={() => setMobileOpen(false)}>
-                  <li className={styles.explore}>Dashboard</li>
-                </NavLink>
-                <NavLink to="/marketplace" onClick={() => setMobileOpen(false)}>
-                  <li className={styles.marketplace}>Bridge NFT</li>
-                </NavLink>
-                <NavLink to="/activity" onClick={() => setMobileOpen(false)}>
-                  <li className={styles.activities}>Activities</li>
-                </NavLink> */}
+                {isConnected && chain.network !== "Godwoken Testnet" ? (
+                  <li onClick={() => setMobileOpen(false)}>
+                    <NavLink
+    
+                      to="/marketplace"
+                      className={() =>
+                        nav.pathname === "/marketplace"
+                          ? `${styles.navlinks} ${styles.active}`
+                          : `${styles.navlinks}`
+                      }
+                    >
+                      Swap NFT
+                      <div></div>
+                    </NavLink>
+                  </li>
+                ) : (
+                  ""
+                )}
               </ul>
             </div>
           </div>

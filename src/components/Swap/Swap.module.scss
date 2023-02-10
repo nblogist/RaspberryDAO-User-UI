@@ -1,420 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+
 .dark {
   .swappage {
-    background: #1f2235;
+    background-image: linear-gradient(#352667, #4b3077);
   }
 
   .heading {
     color: #ffffff;
   }
 
-  .swapbox {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 0.5px solid rgba($color: #ffffff, $alpha: 0.4);
-    backdrop-filter: blur(400px);
-    // background-image: url("../../images/Bg.svg");
-    // background-size: cover;
-  }
-
-  .choose {
-    border: 2px solid rgba(220, 57, 252, 0.5);
-    background: #1f2235;
-  }
-
-  .choosenft {
-    color: #ffffff;
-    background: transparent;
-  }
-
-  .choose:hover {
-    background: linear-gradient(
-      90deg,
-      rgb(116, 2, 145) 12%,
-      rgb(255, 119, 214) 100%
-    );
-  }
-
-  .swapbutton {
-    background: rgba(8, 0, 18, 0.1);
-  }
-
-  .swapbuttonopen {
-    background: rgba(4, 46, 87, 0.375);
-  }
-
-  .buttonswap {
-    background: transparent;
-    color: #ffffff;
-  }
-
-  .leftswapbox {
-    color: white;
-  }
-
-  .select {
-    color: #ffffff;
-    background: rgba(217, 217, 217, 0.36);
-    font-family: "Poppins", sans-serif;
-    -moz-appearance: none;
-    background: rgba(217, 217, 217, 0.36);
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-    background-repeat: no-repeat;
-    background-position-x: 250px;
-    background-position-y: 8px;
-  }
-
-  select option {
-    color: #1f2235;
-    background: rgba(217, 217, 217, 0.36) !important;
-    font-family: "Poppins", sans-serif;
-  }
-
-  .select:invalid {
-    color: #ffffff !important;
-  }
-
-  .amountandbalance {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 3px solid #adbdbd;
-  }
-
-  .amountandbalanceright {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 3px solid #adbdbd;
-  }
-
-  .amountandbalancerightopen {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 3px solid #adbdbd;
-  }
-
-  .rightswapbox {
-    color: white;
-  }
-
-  .to {
-    color: white;
-  }
-
-  .input {
-    color: white;
-    background: rgba(217, 217, 217, 0.36);
-    font-family: "Poppins", sans-serif;
-  }
-
-  .edit:hover {
-    color: #dc39fc;
+  .subheading {
+    color: #FFFFFF;
   }
 }
 
 .light {
   .swappage {
-    background-color: #eae6f0;
+    background-image: linear-gradient(#FFFFFF, #dbbce8);
   }
 
   .heading {
     color: #1a1a1a;
   }
 
-  .swapbox {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 0.5px solid #1a1a1a;
-    backdrop-filter: blur(400px);
-    // background-image: url("../../images/Bg.svg");
-    background-size: cover;
+  .subheading {
+    color: #000000;
   }
-
-  .choose {
-    border: 2px solid rgba(220, 57, 252, 0.5);
-    background: #f5f5f5;
-  }
-
-  .choosenft {
-    color: #1a1a1a;
-    background: transparent;
-  }
-
-  .choose:hover {
-    background: linear-gradient(
-      90deg,
-      rgba(177, 4, 220, 0.611) 12%,
-      rgba(255, 119, 214, 0.681) 100%
-    );
-  }
-
-  .swapbutton {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  .swapbuttonopen {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  .buttonswap {
-    background: transparent;
-    color: #1a1a1a;
-  }
-
-  .leftswapbox {
-    color: #1a1a1a;
-  }
-
-  .select {
-    color: #1a1a1a;
-    background: rgba(136, 136, 136, 0.36);
-    font-family: "Poppins", sans-serif;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-    background-repeat: no-repeat;
-    background-position-x: 250px;
-    background-position-y: 8px;
-  }
-
-  select option {
-    color: #1f2235;
-    background: rgba(136, 136, 136, 0.36);
-  }
-
-  .select:invalid {
-    color: #1a1a1a !important;
-  }
-
-  .amountandbalance {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 3px solid #8f8f8f;
-  }
-
-  .amountandbalanceright {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 3px solid #8f8f8f;
-  }
-
-  .amountandbalancerightopen {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    border: 3px solid #8f8f8f;
-  }
-
-  .rightswapbox {
-    color: #1a1a1a;
-  }
-
-  .to {
-    color: #1a1a1a;
-  }
-
-  .input {
-    color: #1a1a1a;
-    background: rgba(136, 136, 136, 0.36);
-    font-family: "Poppins", sans-serif;
-  }
-}
-
-.tooltip {
-  margin-left: -267px !important;
-  margin-top: -200px !important;
-  width: 140px !important;
 }
 
 .swappage {
-  padding-top: 80px;
+  padding-top: 120px;
   min-height: calc(100vh - 100px);
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto";
   padding-bottom: 20px;
 }
 
 .heading {
-  padding-top: 32px;
-  font-family: "Poppins", sans-serif;
+  padding-top: 60px;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 116%;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+.subheading {
+  padding-top: 40px;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
-  font-size: 48px;
-  line-height: 116%;
-  text-align: center;
-  padding-bottom: 24px;
+  font-size: 20px;
+  line-height: 150%;
+  text-align: left;
+  padding-bottom: 40px;
+  width: 1000px;
+  margin-left: calc(50% - 500px);
 }
 
 .swapbox {
-  backdrop-filter: blur(400px);
   border-radius: 25px;
   width: 1000px;
-  margin-left: calc(50% - 500px);
+  margin-left: calc(50% - 531px);
   display: flex;
-  background-size: cover;
-  padding-bottom: 40px;
+  flex-direction: column;
+  padding: 0px 30px 40px 30px;
+  margin-bottom: 40px;
+  background: #000000;
+  border: 1px solid #FFFFFF;
 }
 
-.choose {
-  margin-left: 25px;
-  margin-top: 18px;
-  margin-bottom: 20px;
+.upperswapbox {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  justify-content: center;
-  border-radius: 50px;
-  padding: 12px 24px;
-  width: fit-content;
-  background: #1f2235;
-  cursor: pointer;
 }
 
-.choosenft {
-  border: none;
-  outline: none;
-  text-decoration: none;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  font-weight: 400;
-  font-size: 20px;
-}
-
-.swapbutton {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  border-radius: 100%;
-  width: 80px;
-  height: 70px;
-  margin-left: -15px;
-  margin-top: 215px;
-  cursor: pointer;
-  border: 1px solid white;
-}
-
-.swapbuttonopen {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  border-radius: 100%;
-  width: 80px;
-  height: 70px;
-  margin-left: -15px;
-  margin-top: 300px;
-  cursor: pointer;
-  border: 1px solid white;
-}
-
-.buttonswap {
-  border: none;
-  outline: none;
-  text-decoration: none;
-  background: transparent;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.leftswapbox {
-  flex-basis: 50%;
-  /* border-right: 2px solid rgba(220, 57, 252, 0.5); */
+.leftupper,
+.rightupper,
+.leftmiddle,
+.rightmiddle,
+.leftlower,
+.rightlower {
+  flex-basis: 40%;
 }
 
 .from {
-  margin-top: 30px;
-  text-align: left;
+  margin-bottom: 10px;
+  text-align: center;
   font-weight: 500;
   font-size: 24px;
-  margin-left: 25px;
-  font-family: "Poppins", sans-serif;
+  margin-left: 0px;
+  font-family: "Roboto";
+  color: white;
 }
 
-.cardinfo {
-  margin-left: 25px;
-  margin-top: 24px;
-  margin-bottom: 32px;
+.select {
+  color: #ffffff;
+  background: rgba(217, 217, 217, 0.36);
+  font-family: "Roboto";
+  -moz-appearance: none;
+  background: rgba(217, 217, 217, 0.36);
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 8px;
 }
 
-.card {
-  display: flex;
+select option {
+  color: #1f2235;
+  background: rgba(217, 217, 217, 0.36) !important;
+  font-family: "Roboto";
 }
 
-.aboutcard {
-  margin-left: 20px;
-  font-family: "Poppins", sans-serif;
-  position: relative;
-}
-
-.cardhead {
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  line-height: 136%;
-  // margin-bottom: 6px;
-  align-items: flex-start;
-  min-width: 200px;
-}
-
-.edit {
-  width: fit-content;
-  align-items: flex-end;
-  cursor: pointer;
-  // margin-top: 64px;
-  bottom: 5px;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  position: absolute;
-}
-
-.simage{
-  min-height: 120px;
-}
-
-.sampleimage {
-  width: 120px;
-  border-radius: 10px;
-}
-
-.carddesc {
-  font-size: 18px;
-  font-weight: 200;
-  letter-spacing: 0.04em;
-  line-height: 136%;
-}
-
-.selectNFT {
-  margin-top: 10px;
-  margin-left: 30px;
-  text-align: left;
-  // margin-bottom: 20px;
-  margin-right: 50px;
-  display: flex;
-  align-items: center;
-  position: relative;
+.select:invalid {
+  color: #ffffff !important;
 }
 
 .select {
@@ -426,53 +130,242 @@
   letter-spacing: 0.04em;
   font-weight: 400;
   height: 40px;
-  width: 280px;
   text-decoration: none;
   align-items: center;
   cursor: pointer;
   outline: none;
+  width: 400px;
 }
 
 select option {
   font-size: 16px;
 }
 
+.selectNFT {
+  margin-top: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.bitcoinimg {
+  position: absolute;
+  z-index: 2;
+  margin-left: 10px;
+  width: 28px;
+}
+
+.middleupper {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.to {
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+  margin-left: 0px;
+  font-family: "Roboto";
+  color: white;
+}
+
+.input {
+  z-index: 1;
+  // margin-left: -40px;
+  padding-left: 50px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 116%;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  height: 40px;
+  width: 350px;
+  text-align: left;
+  text-decoration: none;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: none;
+  color: white;
+  background: rgba(217, 217, 217, 0.36);
+  font-family: "Roboto";
+}
+
+.inputNFT {
+  display: flex;
+  margin-top: 10px;
+  text-align: left;
+  align-items: center;
+  position: relative;
+}
+
+.middleswapbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  margin-bottom: 36px;
+}
+
+.choose {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.choosenft {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  font-family: "Roboto";
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 8px 24px;
+  border: 1px solid #161616;
+  background: #ffffff;
+  color: #000000;
+  // width: 380px;
+}
+
+.choosenft:hover {
+  background: #161616;
+  color: #ffffff;
+  border: 1px solid #FFFFFF;
+}
+
+.cardinfo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card {
+  display: flex;
+}
+
+.aboutcard {
+  margin-left: 20px;
+  font-family: "Roboto";
+  position: relative;
+  color: white;
+}
+
+.cardhead {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 136%;
+  // margin-bottom: 6px;
+  align-items: flex-start;
+  min-width: 200px;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.edit {
+  width: fit-content;
+  align-items: flex-end;
+  cursor: pointer;
+  font-size: 20px;
+  bottom: 5px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  position: absolute;
+}
+
+.simage {
+  min-height: 120px;
+  position: relative;
+  cursor: pointer;
+}
+
+.simage .question {
+  display: block;
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  pointer-events: none;
+}
+
+.sampleimage {
+  webkit-filter: blur(4px);
+  /* Chrome, Safari, Opera */
+  filter: blur(4px);
+}
+
+.sampleimage,
+.leftsampleimage {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+}
+
+.carddesc {
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 0.04em;
+  line-height: 136%;
+}
+
+.edit:hover {
+  color: #f1709e;
+}
+
+.tooltip {
+  display: none;
+  width: 240px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  position: absolute;
+  z-index: 100;
+  margin-top: -90px;
+  margin-left: 95px;
+}
+
+.simage:hover .tooltip {
+  display: block;
+}
+
+.simage .tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
+
+.lowerswapbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .amountandbalance {
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 100%);
+  border: 3px solid #adbdbd;
   display: flex;
   flex-direction: row;
-  margin-left: 25px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto";
   justify-content: space-between;
-  margin-right: 50px;
   backdrop-filter: blur(400px);
   border-radius: 50px;
   padding: 15px 40px 15px 40px;
-}
-
-.amountandbalanceright {
-  display: flex;
-  flex-direction: row;
-  margin-left: 25px;
-  font-family: "Poppins", sans-serif;
-  justify-content: space-between;
-  margin-right: 50px;
-  backdrop-filter: blur(400px);
-  border-radius: 50px;
-  padding: 15px 40px 15px 40px;
-  margin-top: 90px;
-}
-
-.amountandbalancerightopen {
-  display: flex;
-  flex-direction: row;
-  margin-left: 25px;
-  font-family: "Poppins", sans-serif;
-  justify-content: space-between;
-  margin-right: 50px;
-  backdrop-filter: blur(400px);
-  border-radius: 50px;
-  padding: 15px 40px 15px 40px;
-  //margin-top: 170px;
+  color: white;
 }
 
 .amount {
@@ -491,168 +384,151 @@ select option {
   font-weight: 200;
 }
 
-.rightswapbox {
-  flex-basis: 50%;
-}
-
-.to {
-  margin-top: 30px;
-  text-align: left;
-  font-weight: 500;
-  font-size: 30px;
-  margin-left: 25px;
-  font-family: "Poppins", sans-serif;
-}
-
-.inputNFT {
+.swapbutton {
   display: flex;
-  margin-top: 5px;
-  margin-left: 30px;
-  text-align: left;
-  margin-right: 50px;
-  margin-bottom: 10px;
   align-items: center;
-  position: relative;
-}
-
-.bitcoinimg {
-  position: absolute;
-  z-index: 2;
-  margin-left: 10px;
-  width: 28px;
-}
-
-.input {
-  z-index: 1;
-  // margin-left: -40px;
-  padding-left: 40px;
-  border-radius: 8px;
-  font-size: 16px;
-  line-height: 116%;
-  letter-spacing: 0.06em;
-  font-weight: 400;
-  height: 40px;
-  width: 125px;
   text-align: center;
-  text-decoration: none;
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  outline: none;
-  border: none;
+  justify-content: center;
+  border-radius: 30px;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  background: #FFFFFF;
+  color: #000000;
 }
 
-// @media only screen and (min-width:1080px) {
-//   .cardhead {
-//     width: 320px;
-//     white-space: nowrap;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-//   }
-// }
+.buttonswap {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background: transparent;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.mobileswapbox {
+  display: none;
+}
 
 @media only screen and (max-width: 1080px) {
-  .tooltip {
-    //bottom: 24px;
-    margin: -196px !important;
-    width: 140px !important;
+  .heading {
+    width: 600px;
+    margin-left: calc(50% - 300px);
+  }
+
+  .subheading {
+    width: 600px;
+    margin-left: calc(50% - 300px);
   }
 
   .swapbox {
-    backdrop-filter: blur(400px);
+    display: none;
+  }
+
+  .mobileswapbox {
     border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 40px 0px;
+    margin-bottom: 40px;
+    background: #000000;
+    border: 1px solid #FFFFFF;
     height: auto;
     width: 600px;
     margin-left: calc(50% - 300px);
-    display: flex;
-    background-image: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobileupperswapbox,
+  .mobilemiddleswapbox,
+  .mobilelowerswapbox {
     flex-direction: column;
-    padding-bottom: 40px;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
   }
 
-  .swapbutton,
-  .swapbuttonopen {
-    margin-top: 48px;
-    margin-left: calc(50% - 30px);
-  }
-
-  .amountandbalanceright,
-  .amountandbalancerightopen {
-    margin-top: 24px;
+  .middleupper,
+  .lowerupper,
+  .middlelower,
+  .lowerlower {
+    margin-top: 20px;
   }
 }
 
 @media only screen and (max-width: 640px) {
-  .tooltip {
-    //bottom: 24px;
-    margin: 24 !important;
-    width: 140px !important;
-  }
-
   .heading {
-    font-size: 28px;
-    padding-bottom: 24px;
+    width: 300px;
+    margin-left: calc(50% - 150px);
+    font-size: 32px;
+    padding-top: 10px;
   }
 
-  .swapbox {
-    backdrop-filter: blur(400px);
-    border-radius: 25px;
-    height: auto;
+  .subheading {
+    padding-top: 20px;
+    width: 300px;
+    margin-left: calc(50% - 150px);
+    font-size: 16px;
+  }
+
+  .mobileswapbox {
     width: 320px;
     margin-left: calc(50% - 160px);
     display: flex;
-    background-image: none;
-    flex-direction: column;
-    padding-bottom: 40px;
+    justify-content: center;
   }
 
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
+  .select {
+    width: 280px;
+  }
+
+  .sampleimage,
+  .leftsampleimage {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
   }
 
   .simage{
-    min-height: 0px;
-  }
-  
-  .aboutcard {
-    margin-left: 0px;
+    min-height: 80px;
   }
 
-  .cardhead{
-    margin-bottom: 40px;
+  .edit, .cardhead{
+    font-size: 14px;
   }
 
-  .edit {
-    margin-top: 10px;
+  .cardinfo{
+    width: 280px;
   }
 
-  .swapbutton,
-  .swapbuttonopen {
-    margin-top: 48px;
-    margin-left: calc(50% - 30px);
+  .simage .question {
+    display: block;
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    pointer-events: none;
   }
 
-  .from,
-  .to,
-  .choose {
-    margin-left: 15px;
+  .input {
+    width: 230px;
   }
 
-  .selectNFT,
-  .inputNFT {
-    margin-left: 20px;
-  }
-
-  .amountandbalance {
-    margin-right: 15px;
-    margin-left: 15px;
-  }
-
-  .amountandbalanceright,
-  .amountandbalancerightopen {
-    margin-top: 24px;
-    margin-right: 15px;
-    margin-left: 15px;
+  .tooltip {
+    display: none;
+    width: 160px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    z-index: 100;
+    margin-top: -60px;
+    margin-left: 75px;
   }
 }

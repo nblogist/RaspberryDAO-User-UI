@@ -13,6 +13,7 @@ import axios from "axios";
 import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
 import { GODWOKEN_NFTS_ADDRESS } from "../../constants/constants";
 import LoadingSpinner from "../spinner/LoadingSpinner";
+import CataloguePopup from "./CataloguePopup";
 
 function Profile() {
   const [chainConfig, setConfig] = useState(null);
@@ -22,7 +23,8 @@ function Profile() {
   const { chain } = useNetwork();
   const themes = useContext(ThemeContext);
   const { theme } = themes;
-
+  const [open, setOpen] = useState(true);
+  const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -34,6 +36,10 @@ function Profile() {
     contractInterface: GodwokenNFTs.abi,
     signerOrProvider: provider,
   });
+
+  const change = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -91,7 +97,7 @@ function Profile() {
                   "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
                 );
                 let metadata = axios.get(cleanUri).catch(function (error) {
-                  console.log(error.toJSON());
+                  // console.log(error.toJSON());
                 });
                 return metadata;
               });
@@ -145,53 +151,39 @@ function Profile() {
     fetchData();
   }, [chain]);
 
+  useEffect(() => {
+    if (isConnected) {
+      if (chain.network.includes("Godwoken")) {
+        setContent(<p>These are your <b>Raspberry DAO NFTs</b>. To swap your NFT's switch to <b>POLYGON NETWORK.</b></p>)
+        setOpen(true)
+      }
+      else {
+        setContent(<p>To view your Swapped NFT's switch to <b>GODWOKEN NETWORK.</b></p>)
+        setOpen(true)
+      }
+    }
+    else {
+      setOpen(false);
+    }
+  }, [chain])
+
   return (
     <>
+      {
+        open ? <CataloguePopup show={open} switch={change} content={content} /> : null
+      }
       <div className={theme === "light" ? styles.light : styles.dark}>
         {isLoading && chain ? (
           <LoadingSpinner isApprovaltx={false} isSwaptx={false} theme={theme} />
         ) : (
           <div className={styles.profile}>
-            {/* <div className={styles.profiledesc}>
-              <div className={styles.bannerimage}>
-                <img src={Banner} alt="BannerImage"></img>
-              </div>
-              <div className={styles.profileimage}>
-                <img src={ProfileImg} alt="ProfileImage"></img>
-              </div>
-              <div className={styles.details}>
-                <div className={styles.name}>Kane Williamson</div>
-                <div className={styles.desc}>Wellington, New Zealand</div>
-                <div className={styles.descdetails}>
-                  NFTs (non-fungible tokens) are unique cryptographic tokens
-                  that exist on a blockchain and cannot be replicated.
-                  "Tokenizing" these real-world tangible assets makes buying,
-                  selling, and trading them more efficient while reducing the
-                  probability of fraud.
-                </div>
-              </div>
-            </div> */}
             <div className={styles.assets}>
-              {/* <div className={styles.categorybar}>
-                <div className={styles.categories}>
-                  <div className={`${styles.category} ${styles.headcategory}`}>
-                    All
-                  </div>
-                  <div className={styles.category}>Favourites</div>
-                  <div className={styles.category}>Category 1</div>
-                  <div className={styles.category}>Category 2</div>
-                </div>
-                <div className={styles.searchbar}>
-                            <FaSearch />
-                            <input className={styles.search} type='text' placeholder='Search' />
-                        </div>
-              </div> */}
               {isConnected && chain.network ? (
                 <div>
                   {userNFTs.length !== 0 ? (
                     <>
                       <div className={styles.heading}>
-                        <span>MY NFT's</span>
+                        <span>MY NFTs</span>
                       </div>
                       <div className={styles.nfts}>
                         {userNFTs.map((nft, index) => {
@@ -200,6 +192,7 @@ function Profile() {
                               to={`/profile/${nft.tokenId}`}
                               state={{
                                 nft: nft,
+                                chain: chain.network
                               }}
                               key={index}
                             >

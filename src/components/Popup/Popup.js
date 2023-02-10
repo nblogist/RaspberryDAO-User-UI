@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Backdrop from "../Backdrop/Backdrop";
-import styles from "./Popup.module.css";
+import styles from "./Popup.module.scss";
 import cross from "../../images/Cross.svg";
+import crossd from "../../images/CrossD.svg";
 import Catalogue from "../SwapCatalogue/SwapCatalogue";
 import {
   useAccount,
@@ -93,7 +94,7 @@ function Popup(props) {
                   "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
                 );
                 let metadata = axios.get(cleanUri).catch(function (error) {
-                  console.log(error.toJSON());
+                  // console.log(error.toJSON());
                 });
                 return metadata;
               });
@@ -148,47 +149,51 @@ function Popup(props) {
   return (
     <>
       <Backdrop show={props.show} switch={props.switch} />
-      <div className={styles.popup}>
-        <div className={styles.cross}>
-          <img src={cross} alt="" onClick={props.switch}></img>
-        </div>
-        <div className={styles.catalogues}>
-          {isLoading ? (
-            <div className={styles.notconnected}>
-              <div>Loading NFTs...</div>
-              <div style={{ marginLeft: "10px", marginTop: "3px" }}>
-                <BsWallet2 />
+      <div className={theme === "light" ? styles.light : styles.dark}>
+        <div className={styles.popup}>
+          <div className={styles.cross}>
+            {
+              theme === 'light' ? <img src={crossd} alt="" onClick={props.switch}></img> : <img src={cross} alt="" onClick={props.switch}></img>
+            }
+          </div>
+          <div className={styles.catalogues}>
+            {isLoading ? (
+              <div className={styles.notconnected}>
+                <div>Loading NFTs...</div>
+                <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                  <BsWallet2 />
+                </div>
               </div>
-            </div>
-          ) : (
-            <div>
-              {userNFTs.length !== 0 ? (
-                <div className={styles.nfts}>
-                  {userNFTs.map((nft, index) => {
-                    return (
-                      <Catalogue
-                        key={index}
-                        setSwap={props.setSwap}
-                        setOpen={props.setOpen}
-                        nft={nft}
-                        selected={props.selected}
-                        setSelected={props.setSelected}
-                        setIndex={props.setIndex}
-                        index={index}
-                      />
-                    );
-                  })}
-                </div>
-              ) : (
-                <div className={styles.notconnected}>
-                  <div>You don't have any NFT</div>
-                  <div style={{ marginLeft: "10px", marginTop: "3px" }}>
-                    <BsWallet2 />
+            ) : (
+              <div>
+                {userNFTs.length !== 0 ? (
+                  <div className={styles.nfts}>
+                    {userNFTs.map((nft, index) => {
+                      return (
+                        <Catalogue
+                          key={index}
+                          setSwap={props.setSwap}
+                          setOpen={props.setOpen}
+                          nft={nft}
+                          selected={props.selected}
+                          setSelected={props.setSelected}
+                          setIndex={props.setIndex}
+                          index={index}
+                        />
+                      );
+                    })}
                   </div>
-                </div>
-              )}
-            </div>
-          )}
+                ) : (
+                  <div className={styles.notconnected}>
+                    <div>You don't have any NFT</div>
+                    <div style={{ marginLeft: "10px", marginTop: "3px" }}>
+                      <BsWallet2 />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

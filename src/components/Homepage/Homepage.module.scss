@@ -1,57 +1,91 @@
- @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 
 .dark {
   .homepage {
-    background-color: #1f2235;
+    background-image: linear-gradient(#352667, #4b3077);
   }
 
   .maincontent {
     color: white;
   }
 
-  .btn {
-    background-color: #6245ed;
+  .firstbtn {
+    background: #161616;
+    border: 1px solid #FFFFFF;
     color: white;
   }
 
-  .btn:hover {
-    background-color: white;
-    color: #6245ed;
+  .secondbtn {
+    border: 1px solid #161616;
+    color:#000000;
   }
 
   .firsttop {
     color: white;
+  }
+
+  .daodesc{
+    color:white;
+  }
+
+  .nftarrow{
+    border: 5px solid white;
+  }
+
+  .answer{
+    color: #FFFFFF;
   }
 }
 
 .light {
   .homepage {
-    background-color: #eae6f0;
+    // background-color: #efd7f0;
+    background-image: linear-gradient(#FFFFFF, #dbbce8);
   }
 
   .maincontent {
-    color: #1f2235;
+    color: #161616;
   }
 
-  .btn {
-    background-color: #6245ed;
+  .secondbtn {
+    background: #161616;
+    border: 1px solid #FFFFFF;
     color: white;
   }
 
-  .btn:hover {
-    background-color: #1f2235;
-    color: white;
+  .firstbtn {
+    border: 1px solid #161616;
+    color: #000000;
   }
 
   .firsttop {
     color: black;
   }
+
+  .daodesc{
+    color: black;
+  }
+
+  .nftarrow{
+    border: 5px solid black;
+  }
+
+  .answer{
+    color: #000000;
+  }
 }
 
 .homepage {
-  padding-top: 80px;
-  min-height: calc(100vh - 100px);
-  padding-bottom: 20px;
+  padding-top: 150px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 50px;
+  flex-direction: column;
+}
+
+.upperhome{
+  display: flex;
+  align-items: center;
 }
 
 .firsttop {
@@ -59,170 +93,236 @@
 }
 
 .main {
-  padding-left: 42px;
+  padding: 0px 60px;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
-  margin-right: 42px;
 }
 
-.main img {
-  padding-top: 20px;
-  width: 1200px;
-  height: 750px;
-  margin-right: 56px;
+.imageslider {
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+
+.firstrow,
+.secondrow {
+  display: flex;
+  flex-direction: row;
+}
+
+.firstrow {
+  margin-bottom: 30px;
+}
+
+.left img {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+}
+
+.right img {
+  width: 150px;
+  height: 150px;
 }
 
 .maincontent {
-  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-decoration: none;
-  font-family: "Poppins", sans-serif;
-  font-size: 36px;
 }
 
 .explore {
   font-weight: 500;
   letter-spacing: 4px;
-  font-size: 56px;
+  font-size: 48px;
   margin-right: 8px;
 }
 
 .first {
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-family: 'Ubuntu';
+}
+
+.innercontent {
   font-weight: 400;
-  margin-bottom: 16px;
-  font-size: 42px;
+  font-size: 20px;
+  font-family: 'Roboto';
 }
 
-.button {
-  margin-top: 36px;
+.buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
 }
 
-.btn {
-  padding: 16px 30px;
-  border-radius: 36px;
+.firstbtn,
+.secondbtn {
+  padding: 10px 70px;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
+  font-weight: 500;
+  font-family: "Ubuntu";
+  font-size: 20px;
+}
 
+.firstbutton {
+  margin-right: 40px;
+}
+
+.daodesc{
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  padding: 0px 65px;
+  text-align: left;
+}
+
+.daocontent{
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Ubuntu";
+}
+
+.daosummary{
+  font-size: 20px;
   font-weight: 400;
-  font-family: "Poppins", sans-serif;
-  font-size: 26px;
+  font-family: "Roboto";
 }
 
-// .btn:hover {
-//   font-weight: 600;
-// }
-
-@media only screen and (max-width: 2100px) {
-  .main img {
-    padding-top: 20px;
-    width: 980px;
-    height: 9 80px;
-  }
+.upgradenfts{
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@media only screen and (max-width: 1900px) {
-  .main img {
-    padding-top: 20px;
-    width: 750px;
-    height: 750px;
-    margin-right: 42px;
-  }
+.nftarrow{
+  cursor: pointer;
+  display: flex;
+  border-radius: 100%;
+  flex-direction: column;
+  height: 90px;
+  width: 90px;
+  justify-content: center;
+  align-items: center;
 }
 
-@media only screen and (max-width: 1800px) {
-  .main img {
-    padding-top: 20px;
-    width: 650px;
-    height: 6500px;
-    margin-right: 42px;
-  }
+.nftarrow img{
+  height: 60px;
+  width: 60px;
 }
 
-@media only screen and (max-width: 1600px) {
-  .main img {
-    padding-top: 20px;
-    width: 600px;
-    height: 600px;
-    margin-right: 42px;
-  }
-
-  .maincontent {
-    font-size: 30px;
-  }
-
-  .explore {
-    font-size: 48px;
-    margin-right: 8px;
-  }
-
-  .first {
-    font-weight: 400;
-    margin-bottom: 12px;
-    font-size: 36px;
-  }
-
-  .button {
-    margin-top: 30px;
-  }
-
-  .btn {
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 20px;
-  }
+.number{
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: -2px;
 }
 
-@media only screen and (max-width: 1350px) {
-  .main img {
-    padding-top: 20px;
-    width: 500px;
-    height: 500px;
-    margin-right: 42px;
-  }
+.faq{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 60px;
+  width: calc(100vw - 150px);
 }
 
-@media only screen and (max-width: 1250px) {
-  .main img {
-    padding-top: 20px;
-    width: 450px;
-    height: 450px;
-    margin-right: 42px;
+.firstquestion{
+  display: flex;
+  flex-direction: column;
+}
+
+.question{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #161616;
+  color: #FFFFFF;
+  font-family: "Ubuntu";
+  font-size: 40px;
+  padding: 10px 30px;
+  border-radius: 20px;
+  align-items: center;
+  font-weight: 700;
+  height: 60px;
+}
+
+.arrow img{
+  height: 40px;
+  cursor: pointer;
+}
+
+.arrow{
+  height: 40px;
+}
+
+.answer{
+  margin-top: 36px;
+  padding: 0px 20px;
+  font-family: "Roboto";
+  font-size: 20px;
+  margin-bottom: 36px;
+  font-weight: 400;
+}
+
+.secondquestion{
+  margin-top: 30px;
+}
+
+.thirdquestion{
+  margin-top: 30px;
+}
+
+@media only screen and (max-width:1240px) {
+  .nftimage{
+    height: 150px;
   }
 
-  .maincontent {
-    font-size: 24px;
+  .nftarrow{
+    width: 75px;
+    height: 75px;
   }
 
-  .explore {
-    font-size: 36px;
-    margin-right: 4px;
-  }
-
-  .first {
-    font-weight: 400;
-    margin-bottom: 12px;
-    font-size: 30px;
-  }
-
-  .button {
-    margin-top: 24px;
+  .nftarrow img{
+    width: 45px;
+    height: 45px;
   }
 }
 
 @media only screen and (max-width: 1080px) {
-  .firsttop {
-    display: block;
-    text-align: center;
-    justify-content: center;
-    font-weight: 400;
-    margin-bottom: 16px;
-    font-size: 36px;
-    padding-top: 20px;
+  .upperhome {
+    flex-direction: column;
+    padding-bottom: 40px;
   }
 
-  .maincontent {
-    font-size: 24px;
+  .firsttop {
+    display: block;
+    text-align: left;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 40px;
+    padding: 0px 65px;
+    font-family: "Ubuntu";
+  }
+
+  .main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageslider {
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 30px;
   }
 
   .explore {
@@ -234,48 +334,135 @@
     display: none;
   }
 
-  .main {
+  .maincontent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // text-align: center;
     flex-direction: column;
   }
 
-  .main img {
-    padding-top: 0px;
-    width: 100%;
-    padding-bottom: 16px;
+  .firstbtn,
+  .secondbtn {
+    padding: 10px 40px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .upgradenfts{
+    flex-direction: column;
+  }
+
+  .nftarrow{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .faq{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 60px;
+    width: calc(100vw - 120px);
+  }
+  
+  .question{
+    font-size: 30px;
+  }
+  
+  .answer{
+    font-size: 20px;
   }
 }
 
 @media only screen and (max-width: 640px) {
-  .firsttop {
-    font-weight: 400;
-    margin-bottom: 16px;
-    font-size: 24px;
-    padding-top: 20px;
+  .homepage{
+    padding-top: 110px;
   }
 
-  .maincontent {
+  .firsttop {
+    margin-bottom: 16px;
+    font-size: 32px;
+    padding: 10px 25px;
+  }
+
+  .main{
+    padding: 0px 20px;
+  }
+
+  .firstrow {
+    margin-bottom: 20px;
+  }
+  
+  .left img {
+    width: 130px;
+    height: 130px;
+    margin-right: 15px;
+  }
+  
+  .right img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .innercontent {
+    padding: 0px 20px;
+    font-size: 16px;
+  }  
+
+  .firstbtn,
+  .secondbtn {
+    padding: 10px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .firstbutton {
+    margin-right: 20px;
+  }
+
+  .daodesc{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 0px 25px;
+    text-align: left;
+  }
+  
+  .daocontent{
+    font-size: 32px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .daosummary{
+    font-size: 16px;
+  }
+
+  .faq{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 25px;
+    width: calc(100vw - 50px);
+  }
+  
+  .question{
     font-size: 20px;
   }
 
-  .explore {
-    font-size: 32px;
-    letter-spacing: 3px;
-    margin-right: 4px;
+  .mainquestion{
+    padding-right: 20px;
   }
-
-  .first {
-    display: none;
-  }
-
-  .main {
-    flex-direction: column;
-  }
-
-  .main img {
-    padding-top: 0px;
-    width: 250px;
-    margin-left: calc(50% - 125px);
-    height: 250px;
-    padding-bottom: 16px;
+  
+  .answer{
+    padding: 0px 10px;
+    font-size: 16px;
   }
 }

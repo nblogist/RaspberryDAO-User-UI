@@ -1,112 +1,20 @@
-.dark {
-  .entirenavbar {
-    background-color: #1f2235;
-  }
-
-  .home,
-  .explore,
-  .marketplace {
-    color: white;
-  }
-
-  .activities {
-    color: white;
-  }
-
-  // .home:hover,
-  // .explore:hover,
-  // .marketplace:hover,
-  // .activities:hover {
-  //   color: #dc39fc;
-  // }
-
-  .mobileham {
-    background-color: #1f2235;
-  }
-
-  .navlinks {
-    color: white;
-  }
-
-  .navlinks:hover {
-    color: #e566ff;
-  }
-
-  // Active
-
-  .active {
-    color: #dc39fc !important;
-  }
-
-  .navlinks div {
-    background-color: transparent;
-  }
-
-  .active div {
-    background-color: #d400ff;
-  }
-}
-
-.light {
-  .entirenavbar {
-    background-color: #eae6f0;
-    // box-shadow: 1px 1px 10px rgb(197, 197, 197);
-  }
-
-  .home,
-  .explore,
-  .marketplace {
-    color: #1a1a1a;
-  }
-
-  .activities {
-    color: #1a1a1a;
-  }
-
-  .home:hover,
-  .explore:hover,
-  .marketplace:hover,
-  .activities:hover {
-    color: #dc39fc;
-  }
-
-  .mobileham {
-    background-color: #1f2235;
-  }
-
-  .navlinks {
-    color: #1a1a1a;
-  }
-
-  .navlinks:hover {
-    color: #e566ff;
-  }
-
-  // Active
-
-  .active {
-    color: #d400ff !important;
-  }
-
-  .navlinks div {
-    background-color: transparent;
-  }
-
-  .active div {
-    background-color: #d400ff;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Ubuntu:wght@300;400;500;700&display=swap');
 
 .entirenavbar {
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 80px;
-  font-family: "Poppins", sans-serif;
+  height: 100px;
+  font-family: "Roboto";
   position: fixed;
   justify-content: space-between;
-  z-index: 5;
-  //   border-bottom: 2px solid black;
+  z-index: 10;
+  background: #161616;
+  overflow-x: scroll;
+}
+
+.entirenavbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .left {
@@ -121,7 +29,7 @@
 }
 
 .logo img {
-  width: 48px;
+  width: 300px;
   display: block;
   border-radius: 0.5rem;
 }
@@ -133,16 +41,21 @@
   text-align: center;
   align-items: center;
   text-decoration: none;
-  font-weight: 200;
+  font-weight: 500;
   font-size: 24px;
 }
 
 .navlinks {
   margin-right: 28px;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: 1px;
   position: relative;
+  color: white;
+}
+
+.navlinks:hover {
+  color: #f1709e;
 }
 
 .navlinks div {
@@ -164,6 +77,18 @@
   -o-transform: translateX(-50%);
 }
 
+.active {
+  color: #f1709e !important;
+}
+
+.navlinks div {
+  background-color: transparent;
+}
+
+.active div {
+  background-color: #f1709e;
+}
+
 .right {
   margin-right: 42px;
   display: flex;
@@ -175,10 +100,22 @@
   display: none;
 }
 
-@media only screen and (max-width: 1178px) {
+@media only screen and (max-width: 1350px) {
+  .logo img {
+    width: 250px;
+    display: block;
+    border-radius: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
   .hamburger {
     display: block;
     margin-left: 18px;
+  }
+
+  .mobileham {
+    background-color: #161616;
   }
 
   .menulinks {
@@ -211,14 +148,14 @@
   }
 
   .mobilelogoimage {
-    width: 36px;
+    width: 300px;
   }
 
   .mobilecontent {
     z-index: 50;
     margin-top: 24px;
-    font-weight: 200;
-    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-family: "Roboto";
     font-size: 22px;
     line-height: 100%;
     letter-spacing: 0.04em;
@@ -230,13 +167,13 @@
 
   .mobilecontent li {
     margin-bottom: 40px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Roboto";
   }
 
   .navlinks {
     margin-right: 0px;
-    font-size: 20px;
-    font-weight: 200;
+    font-size: 24px;
+    font-weight: 500;
     letter-spacing: 1px;
     position: relative;
   }
@@ -261,7 +198,7 @@
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 960px) {
   .right {
     margin-right: 20px;
   }
@@ -273,7 +210,33 @@
   }
 
   .logo img {
-    width: 36px;
+    width: 200px;
+    display: block;
+    border-radius: 0.4rem;
+  }
+
+  .toggle {
+    margin-left: 10px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .entirenavbar {
+    height: 80px;
+  }
+
+  .right {
+    margin-right: 10px;
+  }
+
+  .left {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .logo img {
+    width: 130px;
     display: block;
     border-radius: 0.4rem;
   }
