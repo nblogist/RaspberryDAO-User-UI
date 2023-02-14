@@ -204,6 +204,7 @@ function Swap() {
     overrides: {
       value: ethers.utils.parseEther(totalFees.toString()),
       gasLimit: "100000",
+      gasPrice: "15000000000",
     },
     onSuccess(data) {
       // console.log("Success", data);
