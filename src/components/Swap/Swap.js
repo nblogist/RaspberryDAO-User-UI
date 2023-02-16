@@ -260,6 +260,7 @@ function Swap() {
       setIsLoading(true);
       try {
         const data = await approvalWrite.data.wait();
+        setApproval(true);
         // window.location.reload(false);
         // console.log("Data inner", data);
       } catch (error) {

@@ -40,7 +40,9 @@ function Navbar() {
               <NavLink
                 to="/"
                 className={() =>
-                  nav.pathname === '/' ? `${styles.navlinks} ${styles.active}` : `${styles.navlinks}`
+                  nav.pathname === "/"
+                    ? `${styles.navlinks} ${styles.active}`
+                    : `${styles.navlinks}`
                 }
               >
                 Home
@@ -51,7 +53,7 @@ function Navbar() {
               <NavLink
                 to="/profile"
                 className={() =>
-                  nav.pathname.includes('/profile')
+                  nav.pathname.includes("/profile")
                     ? `${styles.navlinks} ${styles.active}`
                     : `${styles.navlinks}`
                 }
@@ -63,10 +65,9 @@ function Navbar() {
             {isConnected && chain.network !== "Godwoken Testnet" ? (
               <li>
                 <NavLink
-
-                  to="/marketplace"
+                  to="/swap"
                   className={() =>
-                    nav.pathname === '/marketplace'
+                    nav.pathname === "/swap"
                       ? `${styles.navlinks} ${styles.active}`
                       : `${styles.navlinks}`
                   }
@@ -144,10 +145,9 @@ function Navbar() {
                 </li>
                 <li onClick={() => setMobileOpen(false)}>
                   <NavLink
-
                     to="/profile"
                     className={() =>
-                      nav.pathname.includes('/profile')
+                      nav.pathname.includes("/profile")
                         ? `${styles.navlinks} ${styles.active}`
                         : `${styles.navlinks}`
                     }
@@ -159,10 +159,9 @@ function Navbar() {
                 {isConnected && chain.network !== "Godwoken Testnet" ? (
                   <li onClick={() => setMobileOpen(false)}>
                     <NavLink
-    
-                      to="/marketplace"
+                      to="/swap"
                       className={() =>
-                        nav.pathname === "/marketplace"
+                        nav.pathname === "/swap"
                           ? `${styles.navlinks} ${styles.active}`
                           : `${styles.navlinks}`
                       }

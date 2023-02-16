@@ -4,13 +4,10 @@ import styles from "./Profiledesc.module.scss";
 import sample from "../../images/Sample.svg";
 import { FaUserCircle } from "react-icons/fa";
 import { ThemeContext } from "../../App";
-import {
-  useAccount,
-  useNetwork,
-} from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 import LoadingSpinner from "../spinner/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
-import {IoChevronBackOutline} from "react-icons/io5";
+import { IoChevronBackOutline } from "react-icons/io5";
 
 function Profiledesc() {
   const navigate = useNavigate();
@@ -34,10 +31,9 @@ function Profiledesc() {
     if (chain.network === "Godwoken Testnet") {
       image_url = nft.image;
     } else {
-      if (nft.media.length != 0 && nft.media[0].format != 'mp4') {
+      if (nft.media.length != 0 && nft.media[0].format != "mp4") {
         image_url = nft.media[0].gateway;
-      }
-      else {
+      } else {
         image_url = sample;
       }
     }
@@ -52,9 +48,9 @@ function Profiledesc() {
   useEffect(() => {
     // console.log(chain.network, location.state.chain);
     if (chain.network != location.state.chain) {
-      navigate('/profile')
+      navigate("/profile");
     }
-  }, [chain.network])
+  }, [chain.network]);
 
   return (
     <div className={theme === "light" ? styles.light : styles.dark}>
@@ -66,8 +62,10 @@ function Profiledesc() {
         />
       ) : (
         <div className={styles.descmain}>
-          <Link to='/profile'>
-            <div className={styles.back}><IoChevronBackOutline/> Back</div>
+          <Link to="/profile">
+            <div className={styles.back}>
+              <IoChevronBackOutline /> Back
+            </div>
           </Link>
           <div className={styles.descpage}>
             <div className={styles.imgDiv}>
@@ -94,8 +92,10 @@ function Profiledesc() {
                 ""
               ) : (
                 <div className={styles.swap}>
-                  <div className={styles.note}>To swap this NFT, click below button</div>
-                  <Link to="/marketplace">
+                  <div className={styles.note}>
+                    To swap this NFT, click below button
+                  </div>
+                  <Link to="/swap">
                     <div className={styles.secondbutton}>
                       <button className={styles.secondbtn}>Swap NFT</button>
                     </div>
@@ -105,7 +105,6 @@ function Profiledesc() {
             </div>
           </div>
         </div>
-
       )}
     </div>
   );

@@ -1,5 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import Activity from "./components/Activity/Activity";
 import Footer from "./components/Footer/Footer";
@@ -42,7 +47,17 @@ function App() {
             <Route path="/" exact element={<Homepage />} />
             <Route path="/profile" exact element={<Profile />} />
             <Route path="/profile/:id" exact element={<Profiledesc />} />
-            <Route path="/marketplace" exact element={isConnected && chain.network !== "Godwoken Testnet" ? <Swap /> : <Navigate to='/profile'/>} />
+            <Route
+              path="/swap"
+              exact
+              element={
+                isConnected && chain.network !== "Godwoken Testnet" ? (
+                  <Swap />
+                ) : (
+                  <Navigate to="/profile" />
+                )
+              }
+            />
             <Route path="/activity" exact element={<Activity />} />
           </Routes>
           <Footer />
