@@ -154,11 +154,11 @@ function Profile() {
   useEffect(() => {
     if (isConnected) {
       if (chain.network.includes("Godwoken")) {
-        setContent(<p>These are your <b>Raspberry DAO NFTs</b>. To swap your NFT's switch to <b>POLYGON NETWORK.</b></p>)
+        setContent(<p>These are your <b>Raspberry DAO NFTs</b>. To swap your NFTs switch to <b>POLYGON NETWORK.</b></p>)
         setOpen(true)
       }
       else {
-        setContent(<p>To view your Swapped NFT's switch to <b>GODWOKEN NETWORK.</b></p>)
+        setContent(<p>To view your Swapped NFTs switch to <b>GODWOKEN NETWORK.</b></p>)
         setOpen(true)
       }
     }

@@ -40,6 +40,12 @@
     border: 1px solid #161616;
     color: #000000;
   }
+
+  .viewonexplorer,
+  .back,
+  .note {
+    color: #FFFFFF;
+  }
 }
 
 .light {
@@ -86,6 +92,12 @@
     border: 1px solid #FFFFFF;
     color: white;
   }
+
+  .viewonexplorer,
+  .back,
+  .note {
+    color: #000000;
+  }
 }
 
 .descmain {
@@ -98,7 +110,7 @@
   align-items: center;
 }
 
-.back{
+.back {
   font-weight: 500;
   font-size: 20px;
   display: flex;
@@ -145,6 +157,18 @@
   font-family: "Roboto";
   font-weight: 400;
   font-size: 20px;
+}
+
+.viewonexplorer {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 16px;
+  width: block;
+}
+
+.viewonexplorer:hover {
+  text-decoration: underline;
 }
 
 .profdetails {
@@ -211,12 +235,17 @@
   }
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1260px) {
+  .back{
+    width:640px;
+  }
+
   .descpage {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    width:640px;
   }
 
   .sampleProduct {
@@ -226,6 +255,10 @@
   }
 
   .profdetails {
+    justify-content: center;
+  }
+
+  .viewonexplorer{
     justify-content: center;
   }
 
@@ -255,7 +288,12 @@
 }
 
 @media only screen and (max-width: 640px) {
+  .back{
+    width:360px;
+  }
+  
   .descpage {
+    width: 360px;
     margin-top: 40px;
     display: flex;
     background: linear-gradient(180deg,
@@ -298,7 +336,7 @@
     font-size: 16px;
   }
 
-  .note{
+  .note {
     font-size: 16px;
   }
 }

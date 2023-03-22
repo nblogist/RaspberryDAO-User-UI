@@ -109,7 +109,7 @@ function Homepage() {
         <div className={styles.homepage}>
           <div className={styles.upperhome}>
             <div className={styles.firsttop}>
-              Swap your old NFTs for brand new limited-edition NFTs!
+              Swap your old NFTs for new limited-edition NFTs!
             </div>
             <div className={styles.main}>
               <div className={styles.imageslider}>
@@ -148,14 +148,18 @@ function Homepage() {
               </div>
               <div className={styles.maincontent}>
                 <div className={styles.first}>
-                  Swap your old NFTs for brand new limited-edition NFTs!
+                  Swap your old NFTs for new limited-edition NFTs!
                 </div>
                 <div className={styles.innercontent}>
-                  Raspberry DAO is an easy-to-use bridge that lets you trade in
-                  your old NFTs from several popular chains for an all-new
-                  upgradable generative NFT on Godwoken! Our first bridge from
-                  Polygon to Godwoken is live, with more chain support coming
-                  soon.
+                  Raspberry DAO allows you to swap your old NFTs from several
+                  popular chains for all-new generative NFTs on Godwoken!
+                </div>
+                <div
+                  className={styles.innercontent}
+                  style={{ marginTop: "12px" }}
+                >
+                  Read more below about what makes Raspberry DAO NFTs different!
+                  👇
                 </div>
                 <div className={styles.buttons}>
                   <Link to="/profile">
@@ -175,22 +179,35 @@ function Homepage() {
           <div className={styles.daodesc}>
             <div className={styles.daocontent}>
               <div className={styles.firstcontent}>
-                Raspberry DAO NFTs are not ordinary NFTs !
+                Raspberry DAO NFTs are not ordinary NFTs!
               </div>
               <div className={styles.secondcontent}>They're upgradeable!</div>
             </div>
             <div className={styles.daosummary}>
               Raspberry DAO will support multiple rounds of new limited-edition
+              NFTs. Trading in an old NFT gets you a new NFT in the current
+              round. Each round has completely different art than the previous.
+              Once a round is sold out, it's gone forever. Unless... you
+              upgrade.
+            </div>
+            <div className={styles.daosummary}>
+              A Raspberry DAO NFT from older rounds can be upgraded even when a
+              round is closed. Missed out on getting a round 3 NFT before they
+              sold out? You can still get one by upgrading a round 1 or round 2
+              NFT. This makes the older NFTs more and more valuable over time!
+            </div>
+            {/*
+              Raspberry DAO will support multiple rounds of new limited-edition
               NFTs. Simply trade in one of your old NFTs to get started and join
               the current round. Each round has completely different art than
               the previous. Once a round is sold out, it's gone forever.
-              Unless... you upgrade a Raspberry DAO NFT from an older round.{" "}
+              Unless... you upgrade a Raspberry DAO NFT from an older round.
               <span style={{ fontWeight: "700" }}>
                 Keep in mind, that when you trade your old NFTs in using
                 Raspberry DAO, and when you upgrade your Raspberry DAO NFT, the
                 old NFTS are burned!
               </span>
-            </div>
+            </div> */}
             <div className={styles.upgradenfts}>
               {theme === "light" ? (
                 <img
@@ -273,7 +290,7 @@ function Homepage() {
           <div className={styles.faq}>
             <div className={styles.firstquestion}>
               <div className={styles.question}>
-                <div className={styles.mainquestion}>How it works ?</div>
+                <div className={styles.mainquestion}>How it works?</div>
                 {firstQuestion ? (
                   <div
                     className={styles.arrow}
@@ -292,21 +309,23 @@ function Homepage() {
               </div>
               {firstQuestion ? (
                 <div className={styles.answer}>
-                  Trade in your old or unwanted NFTs and redeem them for a
-                  brand-new generative-art NFTs! Raspberry DAO NFTs are
-                  upgradeable for NFTs released in future collections featured
-                  in rounds on Raspberry DAO, even if the round is closed. As a
-                  project of DotMatrix, Raspberry DAO aims to bring much-needed
-                  interoperability to the NFT space. Our bridge from Polygon to
-                  Godwoken is live, with options to bridge swap between more
-                  chains to come soon.
+                  <div>
+                    When you trade in your old NFTs you will get a brand new one
+                    from Raspberry DAO. Your new NFT will be generated and sent
+                    to you within minutes. It doesn’t matter what the NFT is,
+                    Raspberry DAO will take them all!
+                  </div>
+                  <div style={{ marginTop: "10px" }}>
+                    Support for Polygon NFTs is currently live with more chain
+                    support coming soon.
+                  </div>
                 </div>
               ) : null}
             </div>
             <div className={styles.secondquestion}>
               <div className={styles.question}>
                 <div className={styles.mainquestion}>
-                  About the NFT collection rounds
+                  Why trade in your NFTs?
                 </div>
                 {secondQuestion ? (
                   <div
@@ -326,19 +345,27 @@ function Homepage() {
               </div>
               {secondQuestion ? (
                 <div className={styles.answer}>
-                  Raspberry DAO Rounds are like levels in a gamified NFT
-                  release, with each round featuring brand new generative-art
-                  NFTs. You can choose to hold on to your NFT from a previous
-                  round, or upgrade them to the latest collection. Once NFTs are
-                  upgraded, the old NFTs are burned which makes NFTs from
-                  previous rounds even more scarce.
+                  <div>
+                    Many of us have old NFTs sitting around that we don’t want.
+                    Maybe they are from an old Web3 game that shut down or they
+                    were airdropped to us without our asking for them.
+                  </div>
+                  <div style={{ marginTop: "10px" }}>
+                    There are MILLIONS of these NFTs floating around. Now you
+                    can finally use them for something!
+                  </div>
+                  <div style={{ marginTop: "10px" }}>
+                    Our long-term goal is to partner with other projects within
+                    the Nervos ecosystem and continue to add more utility to
+                    Raspberry DAO NFTs with each new round.
+                  </div>
                 </div>
               ) : null}
             </div>
             <div className={styles.thirdquestion}>
               <div className={styles.question}>
                 <div className={styles.mainquestion}>
-                  Why trade in your NFTs?
+                  What are Raspberry DAO rounds?
                 </div>
                 {thirdQuestion ? (
                   <div
@@ -358,10 +385,20 @@ function Homepage() {
               </div>
               {thirdQuestion ? (
                 <div className={styles.answer}>
-                  Why not trade in your old or unwanted NFTs? Raspberry DAO NFTs
-                  are upgradable for new limited edition NFTs in the future, and
-                  we aim to enable various utilities for Raspberry DAO NFTs on
-                  platforms and projects with the Nervos ecosystem.
+                  <div>
+                    Every Raspberry DAO round is a unique NFT collection. Every
+                    round is completely different. Some might be generative art,
+                    and some might be something completely different, like
+                    in-game items. All the different rounds are connected
+                    through upgradeability, which introduces a level of
+                    gamification to every round.
+                  </div>
+                  <div style={{ marginTop: "10px" }}>
+                    Once you own a Raspberry DAO NFT you can choose to hold on
+                    to it or upgrade it to the latest collection. When an NFT is
+                    upgraded the old NFT is burned. This makes NFTs from
+                    previous rounds even more scarce and valuable over time!
+                  </div>
                 </div>
               ) : null}
             </div>

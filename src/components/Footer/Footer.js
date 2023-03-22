@@ -42,19 +42,21 @@ function Footer() {
                 </div>
             </div>
             <div className={styles.lowerfooter}>
-                <div className={styles.copyright}>
+                {/* <div className={styles.copyright}>
                     © Raspberry DAO is a project of DotMatrix. All rights reserved.
-                </div>
-                {/* <div className={styles.lowerleft}>
+                </div> */}
+                <div className={styles.lowerleft}>
                     <div className={styles.copyright}>
                         © Raspberry DAO is a project of DotMatrix. All rights reserved.
                     </div>
-                </div> */}
-                {/* <div className={styles.lowerright}>
-                    <span className={styles.privacy}>Privacy Policy </span> 
-                    <span style={{marginLeft:"10px",marginRight:"10px"}}>|</span>
-                    <span className={styles.terms}>Terms and Conditions</span>
-                </div> */}
+                </div>
+                <div className={styles.lowerright}>
+                    <a href="https://discord.gg/7s46UsKG" target="_blank">
+                        <span className={styles.privacy}>Report a Problem</span>
+                    </a>
+                    {/* <span style={{marginLeft:"10px",marginRight:"10px"}}>|</span>
+                    <span className={styles.terms}>Terms and Conditions</span> */}
+                </div>
             </div>
         </div>
     )

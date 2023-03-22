@@ -118,6 +118,8 @@ function Popup(props) {
                     balance: 1,
                     contract: { address: GODWOKEN_NFTS_ADDRESS },
                     tokenUri: { gateway: metadata_uri },
+                    selectedNFT_approve_count: 1,
+                    selectedNFT_swap_count: 1,
                   };
                   itemArray.push(meta);
                 });
@@ -152,9 +154,11 @@ function Popup(props) {
       <div className={theme === "light" ? styles.light : styles.dark}>
         <div className={styles.popup}>
           <div className={styles.cross}>
-            {
-              theme === 'light' ? <img src={crossd} alt="" onClick={props.switch}></img> : <img src={cross} alt="" onClick={props.switch}></img>
-            }
+            {theme === "light" ? (
+              <img src={crossd} alt="" onClick={props.switch}></img>
+            ) : (
+              <img src={cross} alt="" onClick={props.switch}></img>
+            )}
           </div>
           <div className={styles.catalogues}>
             {isLoading ? (
