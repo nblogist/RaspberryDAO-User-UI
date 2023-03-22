@@ -22,7 +22,7 @@ const godwokenChain = {
   iconUrl: GodwokenImg,
   iconBackground: "#000",
   rpcUrls: {
-    default: "https://godwoken-testnet-v1.ckbapp.dev",
+    default: "https://v1.testnet.godwoken.io/rpcc",
   },
   nativeCurrency: {
     decimals: 18,
@@ -30,7 +30,10 @@ const godwokenChain = {
     symbol: "CKB",
   },
   blockExplorers: {
-    default: { name: "GodWoken Testnet", url: "https://v1.betanet.gwscan.com" },
+    default: {
+      name: "GodWoken Testnet",
+      url: "https://v1.testnet.gwscan.com/",
+    },
   },
   testnet: true,
 };
@@ -38,10 +41,10 @@ const godwokenChain = {
 const { chains, provider, webSocketProvider } = configureChains(
   [
     // chain.mainnet,
-    // chain.polygon,
+    chain.polygon,
     godwokenChain,
     // chain.rinkeby,
-    chain.polygonMumbai,
+    //chain.polygonMumbai,
     ...(process.env.REACT_APP_ENABLE_TESTNETS === "true"
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),

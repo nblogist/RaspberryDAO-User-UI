@@ -13,6 +13,8 @@ function SwapCatalogue(props) {
     props.setSwap(true);
     const nft = props.nft;
     nft.hasSelected = true;
+    nft.selectedNFT_approve_count = 1;
+    nft.selectedNFT_swap_count = 1;
     props.setSelected(nft);
     props.setIndex(props.index + 1);
   };
@@ -23,10 +25,9 @@ function SwapCatalogue(props) {
     if (chain.network === "Godwoken Testnet") {
       image_url = props.nft.image;
     } else {
-      if (props.nft.media.length != 0 && props.nft.media[0].format != 'mp4') {
+      if (props.nft.media.length != 0 && props.nft.media[0].format != "mp4") {
         image_url = props.nft.media[0].gateway;
-      }
-      else {
+      } else {
         image_url = sample;
       }
     }

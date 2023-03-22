@@ -77,9 +77,21 @@
   margin-right: 17px;
 }
 
+.nameandlogo{
+  display:flex;
+  justify-content:space-between;
+  flex-direction: row;
+}
+
 .name {
   font-family: "Roboto";
   font-weight: 400;
+  padding-right: 10px;
+}
+
+.logo img{
+  width: 20px;
+  height: 20px;
 }
 
 .desc {

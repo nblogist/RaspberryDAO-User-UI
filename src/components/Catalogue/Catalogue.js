@@ -3,6 +3,8 @@ import styles from "./Catalogue.module.scss";
 import sample from "../../images/Sample.svg";
 import { ThemeContext } from "../../App";
 import { useNetwork } from "wagmi";
+import Godwokenlogo from '../../images/godwoken-logo-2.svg';
+import polygonlogo from '../../images/polygon.png';
 
 function Catalogue({ nft, index }) {
   const { chain } = useNetwork();
@@ -45,7 +47,14 @@ function Catalogue({ nft, index }) {
             </div>
             <div className={styles.lowerbox}>
               <div className={styles.lowerboxcontent}>
-                <div className={styles.name}>{Truncate(nft.title)}</div>
+                <div className={styles.nameandlogo}>
+                  <div className={styles.name}>{Truncate(nft.title)}</div>
+                  <div className={styles.logo}>
+                    {
+                      chain.network === 'Godwoken Testnet' ? <img src={Godwokenlogo}></img> : <img src={polygonlogo}></img>
+                    }
+                  </div>
+                </div>
                 {/* <div className={styles.desc}>By Someone</div> */}
                 <div className={styles.button}>
                   <button className={styles.bttn}>View &#8594;</button>

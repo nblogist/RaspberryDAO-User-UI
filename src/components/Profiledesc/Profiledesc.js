@@ -8,6 +8,7 @@ import { useAccount, useNetwork } from "wagmi";
 import LoadingSpinner from "../spinner/LoadingSpinner";
 import { useNavigate } from "react-router-dom";
 import { IoChevronBackOutline } from "react-icons/io5";
+import { BsBoxArrowUpRight } from "react-icons/bs";
 
 function Profiledesc() {
   const navigate = useNavigate();
@@ -26,11 +27,32 @@ function Profiledesc() {
     return str.length > 40 ? str.substring(0, 37) + "..." : str;
   };
 
+  const BASE_EXPLORER_URL_GODWOKEN =
+    "https://gw-explorer.nervosdao.community/token/";
+
+  const BASE_EXPLORER_URL_POLYGON = "https://polygonscan.com/token/";
+  const NFT_CONTRACT_ADDRESS = nft.contract.address;
+  const TOKEN_ID = nft.tokenId.toString();
+  const TOKEN_CONCAT_STR_POLYGON = "?a=";
+  const TOKEN_CONCAT_STR_GODWOKEN = `/instance/${TOKEN_ID}/token-transfers`;
+
+  let NFT_EXPLORER_URL = "";
+  //BASE_EXPLORER_URL + NFT_CONTRACT_ADDRESS + TOKEN_CONCAT_STR + TOKEN_ID;
+
   let image_url = "";
   try {
     if (chain.network === "Godwoken Testnet") {
       image_url = nft.image;
+      NFT_EXPLORER_URL =
+        BASE_EXPLORER_URL_GODWOKEN +
+        NFT_CONTRACT_ADDRESS +
+        TOKEN_CONCAT_STR_GODWOKEN;
     } else {
+      NFT_EXPLORER_URL =
+        BASE_EXPLORER_URL_POLYGON +
+        NFT_CONTRACT_ADDRESS +
+        TOKEN_CONCAT_STR_POLYGON +
+        TOKEN_ID;
       if (nft.media.length != 0 && nft.media[0].format != "mp4") {
         image_url = nft.media[0].gateway;
       } else {
@@ -52,6 +74,8 @@ function Profiledesc() {
     }
   }, [chain.network]);
 
+  // console.log(nft);
+
   return (
     <div className={theme === "light" ? styles.light : styles.dark}>
       {isLoading ? (
@@ -64,7 +88,10 @@ function Profiledesc() {
         <div className={styles.descmain}>
           <Link to="/profile">
             <div className={styles.back}>
-              <IoChevronBackOutline /> Back
+              <div>
+                <IoChevronBackOutline />
+              </div>
+              <div style={{marginTop:"-5px"}}>Back</div>
             </div>
           </Link>
           <div className={styles.descpage}>
@@ -80,6 +107,11 @@ function Profiledesc() {
               <div className={styles.prodid}>
                 Token Id : {Truncate(nft.tokenId)}
               </div>
+              <a href={NFT_EXPLORER_URL} target="_blank">
+                <div className={styles.viewonexplorer}>
+                  View NFT on Explorer <BsBoxArrowUpRight />
+                </div>
+              </a>
               <div className={styles.profdetails}>
                 <FaUserCircle className={styles.user} />
                 <div className={styles.profile}>
@@ -95,7 +127,7 @@ function Profiledesc() {
                   <div className={styles.note}>
                     To swap this NFT, click below button
                   </div>
-                  <Link to="/swap">
+                  <Link to="/swap" state={{ nftdesc: nft }}>
                     <div className={styles.secondbutton}>
                       <button className={styles.secondbtn}>Swap NFT</button>
                     </div>

@@ -17,22 +17,22 @@
 
   .secondbtn {
     border: 1px solid #161616;
-    color:#000000;
+    color: #000000;
   }
 
   .firsttop {
     color: white;
   }
 
-  .daodesc{
-    color:white;
+  .daodesc {
+    color: white;
   }
 
-  .nftarrow{
+  .nftarrow {
     border: 5px solid white;
   }
 
-  .answer{
+  .answer {
     color: #FFFFFF;
   }
 }
@@ -62,15 +62,15 @@
     color: black;
   }
 
-  .daodesc{
+  .daodesc {
     color: black;
   }
 
-  .nftarrow{
+  .nftarrow {
     border: 5px solid black;
   }
 
-  .answer{
+  .answer {
     color: #000000;
   }
 }
@@ -78,14 +78,12 @@
 .homepage {
   padding-top: 150px;
   display: flex;
-  align-items: center;
   padding-bottom: 50px;
   flex-direction: column;
 }
 
-.upperhome{
+.upperhome {
   display: flex;
-  align-items: center;
 }
 
 .firsttop {
@@ -129,15 +127,8 @@
 .maincontent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   text-decoration: none;
-}
-
-.explore {
-  font-weight: 500;
-  letter-spacing: 4px;
-  font-size: 48px;
-  margin-right: 8px;
 }
 
 .first {
@@ -174,7 +165,7 @@
   margin-right: 40px;
 }
 
-.daodesc{
+.daodesc {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
@@ -182,7 +173,7 @@
   text-align: left;
 }
 
-.daocontent{
+.daocontent {
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 40px;
@@ -191,20 +182,21 @@
   font-family: "Ubuntu";
 }
 
-.daosummary{
+.daosummary {
   font-size: 20px;
   font-weight: 400;
   font-family: "Roboto";
+  margin-bottom: 16px;
 }
 
-.upgradenfts{
+.upgradenfts {
   margin-top: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.nftarrow{
+.nftarrow {
   cursor: pointer;
   display: flex;
   border-radius: 100%;
@@ -215,19 +207,19 @@
   align-items: center;
 }
 
-.nftarrow img{
+.nftarrow img {
   height: 60px;
   width: 60px;
 }
 
-.number{
+.number {
   font-family: "Roboto";
   font-size: 16px;
   font-weight: 500;
   margin-top: -2px;
 }
 
-.faq{
+.faq {
   margin-top: 80px;
   display: flex;
   flex-direction: column;
@@ -235,12 +227,12 @@
   width: calc(100vw - 150px);
 }
 
-.firstquestion{
+.firstquestion {
   display: flex;
   flex-direction: column;
 }
 
-.question{
+.question {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -255,16 +247,16 @@
   height: 60px;
 }
 
-.arrow img{
+.arrow img {
   height: 40px;
   cursor: pointer;
 }
 
-.arrow{
+.arrow {
   height: 40px;
 }
 
-.answer{
+.answer {
   margin-top: 36px;
   padding: 0px 20px;
   font-family: "Roboto";
@@ -273,25 +265,25 @@
   font-weight: 400;
 }
 
-.secondquestion{
+.secondquestion {
   margin-top: 30px;
 }
 
-.thirdquestion{
+.thirdquestion {
   margin-top: 30px;
 }
 
 @media only screen and (max-width:1240px) {
-  .nftimage{
+  .nftimage {
     height: 150px;
   }
 
-  .nftarrow{
+  .nftarrow {
     width: 75px;
     height: 75px;
   }
 
-  .nftarrow img{
+  .nftarrow img {
     width: 45px;
     height: 45px;
   }
@@ -325,21 +317,17 @@
     margin-bottom: 30px;
   }
 
-  .explore {
-    font-size: 48px;
-    margin-right: 6px;
-  }
-
   .first {
     display: none;
   }
 
   .maincontent {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    // text-align: center;
     flex-direction: column;
+  }
+
+  .buttons {
+    justify-content: center;
   }
 
   .firstbtn,
@@ -352,34 +340,44 @@
     font-size: 20px;
   }
 
-  .upgradenfts{
+  .upgradenfts {
     flex-direction: column;
   }
 
-  .nftarrow{
+  .nftarrow {
     margin-top: 20px;
     margin-bottom: 20px;
   }
 
-  .faq{
+  .faq {
     margin-top: 80px;
     display: flex;
     flex-direction: column;
     padding: 0px 60px;
     width: calc(100vw - 120px);
   }
-  
-  .question{
+
+  .question {
     font-size: 30px;
   }
-  
-  .answer{
+
+  .answer {
     font-size: 20px;
   }
 }
 
+@media only screen and (max-width: 720px) {
+  .question {
+    font-size: 24px;
+  }
+
+  .mainquestion {
+    padding-right: 20px;
+  }
+}
+
 @media only screen and (max-width: 640px) {
-  .homepage{
+  .homepage {
     padding-top: 110px;
   }
 
@@ -389,20 +387,20 @@
     padding: 10px 25px;
   }
 
-  .main{
+  .main {
     padding: 0px 20px;
   }
 
   .firstrow {
     margin-bottom: 20px;
   }
-  
+
   .left img {
     width: 130px;
     height: 130px;
     margin-right: 15px;
   }
-  
+
   .right img {
     width: 130px;
     height: 130px;
@@ -411,7 +409,7 @@
   .innercontent {
     padding: 0px 20px;
     font-size: 16px;
-  }  
+  }
 
   .firstbtn,
   .secondbtn {
@@ -426,42 +424,42 @@
     margin-right: 20px;
   }
 
-  .daodesc{
+  .daodesc {
     display: flex;
     flex-direction: column;
     margin-top: 40px;
     padding: 0px 25px;
     text-align: left;
   }
-  
-  .daocontent{
+
+  .daocontent {
     font-size: 32px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
   }
-  
-  .daosummary{
+
+  .daosummary {
     font-size: 16px;
   }
 
-  .faq{
+  .faq {
     margin-top: 80px;
     display: flex;
     flex-direction: column;
     padding: 0px 25px;
     width: calc(100vw - 50px);
   }
-  
-  .question{
+
+  .question {
     font-size: 20px;
   }
 
-  .mainquestion{
+  .mainquestion {
     padding-right: 20px;
   }
-  
-  .answer{
+
+  .answer {
     padding: 0px 10px;
     font-size: 16px;
   }
