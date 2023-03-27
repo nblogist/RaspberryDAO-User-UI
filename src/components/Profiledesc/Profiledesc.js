@@ -41,7 +41,7 @@ function Profiledesc() {
 
   let image_url = "";
   try {
-    if (chain.network === "Godwoken Testnet") {
+    if (chain.network === "Godwoken ") {
       image_url = nft.image;
       NFT_EXPLORER_URL =
         BASE_EXPLORER_URL_GODWOKEN +
@@ -91,7 +91,7 @@ function Profiledesc() {
               <div>
                 <IoChevronBackOutline />
               </div>
-              <div style={{marginTop:"-5px"}}>Back</div>
+              <div style={{ marginTop: "-5px" }}>Back</div>
             </div>
           </Link>
           <div className={styles.descpage}>
@@ -120,7 +120,7 @@ function Profiledesc() {
                 </div>
               </div>
               <div className={styles.nftdesc}>{nft.description}</div>
-              {chain.network === "Godwoken Testnet" ? (
+              {chain.network === "Godwoken " ? (
                 ""
               ) : (
                 <div className={styles.swap}>

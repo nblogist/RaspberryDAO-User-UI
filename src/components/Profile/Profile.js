@@ -71,13 +71,13 @@ function Profile() {
               network: Network.MATIC_MUMBAI,
             };
             break;
-          case "Godwoken Testnet":
+          case "Godwoken ":
             config = {};
             break;
         }
 
         try {
-          if (chain.network === "Godwoken Testnet") {
+          if (chain.network === "Godwoken ") {
             const bal = await contract.balanceOf(address);
             const metadataURIs = [];
             const itemArray = [];
@@ -154,24 +154,31 @@ function Profile() {
   useEffect(() => {
     if (isConnected) {
       if (chain.network.includes("Godwoken")) {
-        setContent(<p>These are your <b>Raspberry DAO NFTs</b>. To swap your NFTs switch to <b>POLYGON NETWORK.</b></p>)
-        setOpen(true)
+        setContent(
+          <p>
+            These are your <b>Raspberry DAO NFTs</b>. To swap your NFTs switch
+            to <b>POLYGON NETWORK.</b>
+          </p>
+        );
+        setOpen(true);
+      } else {
+        setContent(
+          <p>
+            To view your Swapped NFTs switch to <b>GODWOKEN NETWORK.</b>
+          </p>
+        );
+        setOpen(true);
       }
-      else {
-        setContent(<p>To view your Swapped NFTs switch to <b>GODWOKEN NETWORK.</b></p>)
-        setOpen(true)
-      }
-    }
-    else {
+    } else {
       setOpen(false);
     }
-  }, [chain])
+  }, [chain]);
 
   return (
     <>
-      {
-        open ? <CataloguePopup show={open} switch={change} content={content} /> : null
-      }
+      {open ? (
+        <CataloguePopup show={open} switch={change} content={content} />
+      ) : null}
       <div className={theme === "light" ? styles.light : styles.dark}>
         {isLoading && chain ? (
           <LoadingSpinner isApprovaltx={false} isSwaptx={false} theme={theme} />
@@ -192,7 +199,7 @@ function Profile() {
                               to={`/profile/${nft.tokenId}`}
                               state={{
                                 nft: nft,
-                                chain: chain.network
+                                chain: chain.network,
                               }}
                               key={index}
                             >

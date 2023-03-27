@@ -3,8 +3,8 @@ import styles from "./Catalogue.module.scss";
 import sample from "../../images/Sample.svg";
 import { ThemeContext } from "../../App";
 import { useNetwork } from "wagmi";
-import Godwokenlogo from '../../images/godwoken-logo-2.svg';
-import polygonlogo from '../../images/polygon.png';
+import Godwokenlogo from "../../images/godwoken-logo-2.svg";
+import polygonlogo from "../../images/polygon.png";
 
 function Catalogue({ nft, index }) {
   const { chain } = useNetwork();
@@ -19,13 +19,12 @@ function Catalogue({ nft, index }) {
 
   // console.log(nft);
   try {
-    if (chain.network === "Godwoken Testnet") {
+    if (chain.network === "Godwoken ") {
       image_url = nft.image;
     } else {
-      if (nft.media.length != 0 && nft.media[0].format != 'mp4') {
+      if (nft.media.length != 0 && nft.media[0].format != "mp4") {
         image_url = nft.media[0].gateway;
-      }
-      else {
+      } else {
         image_url = sample;
       }
     }
@@ -50,9 +49,11 @@ function Catalogue({ nft, index }) {
                 <div className={styles.nameandlogo}>
                   <div className={styles.name}>{Truncate(nft.title)}</div>
                   <div className={styles.logo}>
-                    {
-                      chain.network === 'Godwoken Testnet' ? <img src={Godwokenlogo}></img> : <img src={polygonlogo}></img>
-                    }
+                    {chain.network === "Godwoken " ? (
+                      <img src={Godwokenlogo}></img>
+                    ) : (
+                      <img src={polygonlogo}></img>
+                    )}
                   </div>
                 </div>
                 {/* <div className={styles.desc}>By Someone</div> */}

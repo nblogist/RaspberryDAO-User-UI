@@ -17,8 +17,8 @@ import GodwokenImg from "./images/godwoken-logo-2.svg";
 
 const godwokenChain = {
   id: 71401,
-  name: "Godwoken Testnet",
-  network: "Godwoken Testnet",
+  name: "Godwoken ",
+  network: "Godwoken ",
   iconUrl: GodwokenImg,
   iconBackground: "#000",
   rpcUrls: {
@@ -31,7 +31,7 @@ const godwokenChain = {
   },
   blockExplorers: {
     default: {
-      name: "GodWoken Testnet",
+      name: "GodWoken ",
       url: "https://v1.testnet.gwscan.com/",
     },
   },

@@ -68,13 +68,13 @@ function Popup(props) {
               network: Network.MATIC_MUMBAI,
             };
             break;
-          case "Godwoken Testnet":
+          case "Godwoken ":
             config = {};
             break;
         }
 
         try {
-          if (chain.network === "Godwoken Testnet") {
+          if (chain.network === "Godwoken ") {
             const bal = await contract.balanceOf(address);
             const metadataURIs = [];
             const itemArray = [];
