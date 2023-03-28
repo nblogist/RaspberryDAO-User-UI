@@ -1,17 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Backdrop from "../Backdrop/Backdrop";
 import styles from "./Popup.module.scss";
 import cross from "../../images/Cross.svg";
 import crossd from "../../images/CrossD.svg";
 import Catalogue from "../SwapCatalogue/SwapCatalogue";
-import {
-  useAccount,
-  useNetwork,
-  useSwitchNetwork,
-  useProvider,
-  useContract,
-} from "wagmi";
+import { useAccount, useNetwork, useProvider, useContract } from "wagmi";
 import { Alchemy, Network } from "alchemy-sdk";
 import axios from "axios";
 import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
@@ -20,15 +13,12 @@ import { ThemeContext } from "../../App";
 import { GODWOKEN_NFTS_ADDRESS } from "../../constants/constants";
 
 function Popup(props) {
-  const [chainConfig, setConfig] = useState(null);
-  const [alchemy, setAlchemy] = useState(null);
   const [userNFTs, setUserNFTs] = useState([]);
   const { chain } = useNetwork();
   const themes = useContext(ThemeContext);
   const { theme } = themes;
 
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const provider = useProvider();
   const contract = useContract({
@@ -37,7 +27,7 @@ function Popup(props) {
     signerOrProvider: provider,
   });
 
-  const { address, connector, isConnected } = useAccount();
+  const { address } = useAccount();
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -136,8 +126,6 @@ function Popup(props) {
             setUserNFTs(nfts["ownedNfts"]);
 
             // Parse output
-            const numNfts = nfts["totalCount"];
-            const nftList = nfts["ownedNfts"];
             setIsLoading(false);
           }
         } catch (error) {

@@ -27,11 +27,7 @@ function Activity() {
                   <td>
                     <img src={Profile} alt="Profile"></img>
                   </td>
-                  <td>Hello</td>
-                  <td>Hello</td>
-                  <td>Helllo</td>
-                  <td>Hello</td>
-                  <td>Helllo</td>
+                  <td>""</td>
                 </tr>
               );
             })}

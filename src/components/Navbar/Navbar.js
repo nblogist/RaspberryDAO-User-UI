@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import logo from "../../images/logo.svg";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount, useNetwork } from "wagmi";
 import Toggle from "../../utils/Toggle/Toggle";
 import hamburger from "../../images/Hamburger.svg";
-import hamburgerdark from "../../images/HamburgerDark.svg";
 import close from "../../images/close.svg";
 import { ThemeContext } from "../../App";
 
@@ -26,11 +25,6 @@ function Navbar() {
           <NavLink to="/">
             <div className={styles.logo}>
               <img src={logo} alt="Logo" />
-              {/* {theme === "light" ? (
-                <img src={raspberrylogo} alt="Logo" />
-              ) : (
-                <img src={raspberrylogo} alt="Logo" />
-              )} */}
             </div>
           </NavLink>
         </div>
@@ -79,20 +73,6 @@ function Navbar() {
             ) : (
               ""
             )}
-
-            {/* <li>
-                <NavLink
-                  to="/activity"
-                  className={(nav) =>
-                    nav.isActive
-                      ? `${styles.navlinks} ${styles.active}`
-                      : `${styles.navlinks}`
-                  }
-                >
-                  Activities
-                  <div></div>
-                </NavLink>
-              </li> */}
           </ul>
         </div>
         <div className={styles.right}>
@@ -104,11 +84,6 @@ function Navbar() {
           </div>
           <div className={styles.hamburger} onClick={() => setMobileOpen(true)}>
             <img src={hamburger} alt="Hamburger"></img>
-            {/* {theme === "light" ? (
-              <img src={hamburgerdark} alt="Hamburger"></img>
-            ) : (
-              <img src={hamburger} alt="Hamburger"></img>
-            )} */}
           </div>
         </div>
       </div>

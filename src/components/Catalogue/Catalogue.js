@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./Catalogue.module.scss";
 import sample from "../../images/Sample.svg";
 import { ThemeContext } from "../../App";
@@ -17,20 +17,17 @@ function Catalogue({ nft, index }) {
 
   let image_url = "";
 
-  // console.log(nft);
   try {
     if (chain.network === "Godwoken ") {
       image_url = nft.image;
     } else {
-      if (nft.media.length != 0 && nft.media[0].format != "mp4") {
+      if (nft.media.length !== 0 && nft.media[0].format !== "mp4") {
         image_url = nft.media[0].gateway;
       } else {
         image_url = sample;
       }
     }
-  } catch (error) {
-    // console.log("Error handle", error);
-  }
+  } catch (error) {}
 
   return (
     <>
@@ -38,11 +35,7 @@ function Catalogue({ nft, index }) {
         <div className={styles.catalogue}>
           <div className={styles.container}>
             <div className={styles.simage}>
-              <img
-                src={image_url}
-                alt="NFT Image"
-                className={styles.sampleimage}
-              ></img>
+              <img src={image_url} alt="" className={styles.sampleimage}></img>
             </div>
             <div className={styles.lowerbox}>
               <div className={styles.lowerboxcontent}>
@@ -56,7 +49,6 @@ function Catalogue({ nft, index }) {
                     )}
                   </div>
                 </div>
-                {/* <div className={styles.desc}>By Someone</div> */}
                 <div className={styles.button}>
                   <button className={styles.bttn}>View &#8594;</button>
                 </div>

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import styles from "./Homepage.module.scss";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../App";
-import { useAccount, useNetwork } from "wagmi";
 import raspberrydao_pic_1 from "../../images/Homepage/Slider/1.svg";
 import raspberrydao_pic_2 from "../../images/Homepage/Slider/2.svg";
 import raspberrydao_pic_3 from "../../images/Homepage/Slider/3.svg";
@@ -31,9 +30,6 @@ import close from "../../images/Homepage/close.svg";
 function Homepage() {
   const themes = useContext(ThemeContext);
   const { theme } = themes;
-  const { chain } = useNetwork();
-  const { isConnected } = useAccount();
-
   const [index, setIndex] = useState(0);
   const [firstQuestion, setFirstQuestion] = useState(true);
   const [secondQuestion, setSecondQuestion] = useState(true);
@@ -115,33 +111,33 @@ function Homepage() {
               <div className={styles.imageslider}>
                 <div className={styles.firstrow}>
                   <div className={styles.left}>
-                    {theme == "light" ? (
-                      <img src={first[index]} alt="Image"></img>
+                    {theme === "light" ? (
+                      <img src={first[index]} alt=""></img>
                     ) : (
-                      <img src={firstw[index]} alt="Image"></img>
+                      <img src={firstw[index]} alt=""></img>
                     )}
                   </div>
                   <div className={styles.right}>
-                    {theme == "light" ? (
-                      <img src={second[index]} alt="Image"></img>
+                    {theme === "light" ? (
+                      <img src={second[index]} alt=""></img>
                     ) : (
-                      <img src={secondw[index]} alt="Image"></img>
+                      <img src={secondw[index]} alt=""></img>
                     )}
                   </div>
                 </div>
                 <div className={styles.secondrow}>
                   <div className={styles.left}>
-                    {theme == "light" ? (
-                      <img src={third[index]} alt="Image"></img>
+                    {theme === "light" ? (
+                      <img src={third[index]} alt=""></img>
                     ) : (
-                      <img src={thirdw[index]} alt="Image"></img>
+                      <img src={thirdw[index]} alt=""></img>
                     )}
                   </div>
                   <div className={styles.right}>
-                    {theme == "light" ? (
-                      <img src={fourth[index]} alt="Image"></img>
+                    {theme === "light" ? (
+                      <img src={fourth[index]} alt=""></img>
                     ) : (
-                      <img src={fourthw[index]} alt="Image"></img>
+                      <img src={fourthw[index]} alt=""></img>
                     )}
                   </div>
                 </div>
@@ -196,31 +192,12 @@ function Homepage() {
               sold out? You can still get one by upgrading a round 1 or round 2
               NFT. This makes the older NFTs more and more valuable over time!
             </div>
-            {/*
-              Raspberry DAO will support multiple rounds of new limited-edition
-              NFTs. Simply trade in one of your old NFTs to get started and join
-              the current round. Each round has completely different art than
-              the previous. Once a round is sold out, it's gone forever.
-              Unless... you upgrade a Raspberry DAO NFT from an older round.
-              <span style={{ fontWeight: "700" }}>
-                Keep in mind, that when you trade your old NFTs in using
-                Raspberry DAO, and when you upgrade your Raspberry DAO NFT, the
-                old NFTS are burned!
-              </span>
-            </div> */}
+
             <div className={styles.upgradenfts}>
               {theme === "light" ? (
-                <img
-                  src={nft1}
-                  className={styles.nftimage}
-                  alt="NFT Image 1"
-                ></img>
+                <img src={nft1} className={styles.nftimage} alt=""></img>
               ) : (
-                <img
-                  src={nft1w}
-                  className={styles.nftimage}
-                  alt="NFT Image 1"
-                ></img>
+                <img src={nft1w} className={styles.nftimage} alt=""></img>
               )}
               <div className={styles.nftarrow}>
                 {theme === "light" ? (
@@ -231,17 +208,9 @@ function Homepage() {
                 <div className={styles.number}>+ 1 UP</div>
               </div>
               {theme === "light" ? (
-                <img
-                  src={nft2}
-                  className={styles.nftimage}
-                  alt="NFT Image 2"
-                ></img>
+                <img src={nft2} className={styles.nftimage} alt=""></img>
               ) : (
-                <img
-                  src={nft2w}
-                  className={styles.nftimage}
-                  alt="NFT Image 2"
-                ></img>
+                <img src={nft2w} className={styles.nftimage} alt=""></img>
               )}
               <div className={styles.nftarrow}>
                 {theme === "light" ? (
@@ -252,17 +221,9 @@ function Homepage() {
                 <div className={styles.number}>+ 2 UP</div>
               </div>
               {theme === "light" ? (
-                <img
-                  src={nft3}
-                  className={styles.nftimage}
-                  alt="NFT Image 3"
-                ></img>
+                <img src={nft3} className={styles.nftimage} alt=""></img>
               ) : (
-                <img
-                  src={nft3w}
-                  className={styles.nftimage}
-                  alt="NFT Image 3"
-                ></img>
+                <img src={nft3w} className={styles.nftimage} alt=""></img>
               )}
               <div className={styles.nftarrow}>
                 {theme === "light" ? (
@@ -273,17 +234,9 @@ function Homepage() {
                 <div className={styles.number}>+ 3 UP</div>
               </div>
               {theme === "light" ? (
-                <img
-                  src={nft4}
-                  className={styles.nftimage}
-                  alt="NFT Image 4"
-                ></img>
+                <img src={nft4} className={styles.nftimage} alt=""></img>
               ) : (
-                <img
-                  src={nft4w}
-                  className={styles.nftimage}
-                  alt="NFT Image 4"
-                ></img>
+                <img src={nft4w} className={styles.nftimage} alt=""></img>
               )}
             </div>
           </div>

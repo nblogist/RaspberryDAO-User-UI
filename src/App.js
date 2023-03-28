@@ -22,19 +22,6 @@ function App() {
   const { isConnected } = useAccount();
   const [theme, setTheme] = useState("light");
 
-  // useEffect(() => {
-  //   async function callGethandler() {
-  //     await handleGetRequest();
-  //   }
-  //   callGethandler();
-  // }, []);
-
-  // const handleGetRequest = async () => {
-  //   const response = await fetch("http://146.190.59.173:5100/");
-  //   if (response.status) {
-  //   }
-  // };
-
   const toggleTheme = () => {
     setTheme((cur) => (cur === "light" ? "dark" : "light"));
   };

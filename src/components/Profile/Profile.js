@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Profile.module.scss";
-import Banner from "../../images/Profile/Banner.svg";
-import ProfileImg from "../../images/Profile/Profile.svg";
-import { FaSearch } from "react-icons/fa";
 import Catalogue from "../Catalogue/Catalogue";
 import { ThemeContext } from "../../App";
 import { useAccount, useNetwork, useContract, useProvider } from "wagmi";
@@ -16,9 +13,6 @@ import LoadingSpinner from "../spinner/LoadingSpinner";
 import CataloguePopup from "./CataloguePopup";
 
 function Profile() {
-  const [chainConfig, setConfig] = useState(null);
-  const [GodwokenNFTContract, setGodwokenNFTContract] = useState(null);
-  const [alchemy, setAlchemy] = useState(null);
   const [userNFTs, setUserNFTs] = useState([]);
   const { chain } = useNetwork();
   const themes = useContext(ThemeContext);
@@ -26,7 +20,6 @@ function Profile() {
   const [open, setOpen] = useState(true);
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const { address, isConnected } = useAccount();
 
@@ -103,7 +96,6 @@ function Profile() {
               });
 
               getUri.then((value) => {
-                // console.log(`Metadata ${tokenId.toString()}`, value);
                 let rawImg = value.data.image;
                 var name = value.data.name;
                 var desc = value.data.description;
@@ -138,8 +130,6 @@ function Profile() {
             setUserNFTs(nfts["ownedNfts"]);
 
             // Parse output
-            const numNfts = nfts["totalCount"];
-            const nftList = nfts["ownedNfts"];
             setIsLoading(false);
           }
         } catch (error) {

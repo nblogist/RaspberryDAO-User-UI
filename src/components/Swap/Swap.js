@@ -6,7 +6,6 @@ import {
   useNetwork,
   useContract,
   useProvider,
-  useSwitchNetwork,
   useContractWrite,
   usePrepareContractWrite,
 } from "wagmi";
@@ -18,10 +17,8 @@ import styles from "./Swap.module.scss";
 import bitcoinimg from "../../images/Swap/blockchain-icon.svg";
 import GodwokenImg from "../../images/Swap/godwoken-logo-1.svg";
 import daologo from "../../images/Swap/SwapLogoW.svg";
-import dalogoD from "../../images/Swap/SwapLogoD.svg";
 import Popup from "../Popup/Popup";
 import { ThemeContext } from "../../App";
-import Catalogue from "../Catalogue/Catalogue";
 import sample from "../../images/Sample.svg";
 import ABI from "../../ABIs/BridgeABI.json";
 import GodwokenNFTs from "../../ABIs/GodwokenNFTs.json";
@@ -46,11 +43,8 @@ function Swap() {
   const nft = location.state != null ? location.state : null;
   const themes = useContext(ThemeContext);
   const { theme } = themes;
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
   const { chain } = useNetwork();
-  const { chains, pendingChainId, switchNetwork } = useSwitchNetwork();
-  const GodwokenUrl =
-    "https://www.nervos.org/wp-content/uploads/2021/11/godwokenlive-810x456.png";
   const [open, setOpen] = useState(false);
   const [swap, setSwap] = useState(nft != null ? true : false);
   const [selected, setSelected] = useState({
@@ -66,7 +60,7 @@ function Swap() {
   });
   let image_url = "";
   try {
-    if (selected.media.length != 0) {
+    if (selected.media.length !== 0) {
       image_url = selected.media[0].gateway;
     } else {
       image_url = sample;
@@ -79,13 +73,12 @@ function Swap() {
   const [isApproved, setApproval] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const [isApprovaltx, seApprovaltx] = useState(false);
   const [isSwaptx, setSwaptx] = useState(false);
 
   const [probableGodwokenTitle, setGodwokenProbableTitle] = useState("");
-  const [probableMintingNFT, setProbableMintingNFT] = useState("");
+
   const [popupOpen, setPopupOpen] = useState(false);
   const [txHash, setTxHash] = useState("");
 
@@ -140,7 +133,6 @@ function Swap() {
   useEffect(() => {
     async function fetch() {
       const totalSupply = await godwokenContract.totalSupply();
-      // console.log("Total Sypply", Number(totalSupply.toString()));
       const tokenId = Number(totalSupply.toString()) + 1;
       const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId}`;
       const Uri = Promise.resolve(rawUri);
@@ -152,9 +144,7 @@ function Swap() {
           "ipfs://",
           "https://indigo-defeated-sailfish-361.mypinata.cloud/ipfs/"
         );
-        let metadata = axios.get(cleanUri).catch(function (error) {
-          // console.log(error.toJSON());
-        });
+        let metadata = axios.get(cleanUri).catch(function (error) {});
         return metadata;
       });
 
@@ -180,19 +170,14 @@ function Swap() {
               contract: { address: GODWOKEN_NFTS_ADDRESS },
               tokenUri: { gateway: "" },
             };
-            setProbableMintingNFT(image);
             setGodwokenProbableTitle(name);
-            // console.log("Metadata", meta);
-            // //itemArray.push(meta);
           });
         });
         await new Promise((r) => setTimeout(r, 1000));
-      } catch (error) {
-        setProbableMintingNFT(raspberrydao_pic_3);
-      }
+      } catch (error) {}
     }
     fetch();
-  }, []);
+  }, [address]);
 
   const gasFees = "0.001";
   const bridgeFee = "0.01";
@@ -212,7 +197,7 @@ function Swap() {
     overrides: {
       value: ethers.utils.parseEther(totalFees.toString()),
       gasLimit: "1000000",
-      gasPrice: "15000000000",
+      //gasPrice: "15000000000",
     },
     onSuccess(data) {
       // console.log("Success", data);
@@ -229,7 +214,6 @@ function Swap() {
           navigate("/profile");
           clearTimeout(timerId);
         }, 1000);
-        // console.log("Data inner", data);
       } catch (error) {
         // console.log("Error catch", error);
         setIsLoading(false);
@@ -268,7 +252,6 @@ function Swap() {
       try {
         const data = await approvalWrite.data.wait();
         setApproval(true);
-        // window.location.reload(false);
       } catch (error) {
         // console.log("Error catch", error);
         setIsLoading(false);

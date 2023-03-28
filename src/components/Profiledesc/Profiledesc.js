@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useMemo } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Profiledesc.module.scss";
 import sample from "../../images/Sample.svg";
@@ -14,11 +14,9 @@ function Profiledesc() {
   const navigate = useNavigate();
   const location = useLocation();
   const [nft, setNft] = useState(location.state.nft);
-  const [isApproved, setApproval] = useState(false);
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
   const { chain } = useNetwork();
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const [isApprovaltx, seApprovaltx] = useState(false);
   const [isSwaptx, setSwaptx] = useState(false);
@@ -37,7 +35,6 @@ function Profiledesc() {
   const TOKEN_CONCAT_STR_GODWOKEN = `/instance/${TOKEN_ID}/token-transfers`;
 
   let NFT_EXPLORER_URL = "";
-  //BASE_EXPLORER_URL + NFT_CONTRACT_ADDRESS + TOKEN_CONCAT_STR + TOKEN_ID;
 
   let image_url = "";
   try {
@@ -53,7 +50,7 @@ function Profiledesc() {
         NFT_CONTRACT_ADDRESS +
         TOKEN_CONCAT_STR_POLYGON +
         TOKEN_ID;
-      if (nft.media.length != 0 && nft.media[0].format != "mp4") {
+      if (nft.media.length !== 0 && nft.media[0].format !== "mp4") {
         image_url = nft.media[0].gateway;
       } else {
         image_url = sample;
@@ -68,13 +65,10 @@ function Profiledesc() {
   window.scroll(0, 0);
 
   useEffect(() => {
-    // console.log(chain.network, location.state.chain);
     if (chain.network != location.state.chain) {
       navigate("/profile");
     }
   }, [chain.network]);
-
-  // console.log(nft);
 
   return (
     <div className={theme === "light" ? styles.light : styles.dark}>
@@ -116,7 +110,6 @@ function Profiledesc() {
                 <FaUserCircle className={styles.user} />
                 <div className={styles.profile}>
                   <div className={styles.name}>{address}</div>
-                  {/* <div className={styles.userdesc}>From India</div> */}
                 </div>
               </div>
               <div className={styles.nftdesc}>{nft.description}</div>

@@ -25,7 +25,7 @@ function SwapCatalogue(props) {
     if (chain.network === "Godwoken ") {
       image_url = props.nft.image;
     } else {
-      if (props.nft.media.length != 0 && props.nft.media[0].format != "mp4") {
+      if (props.nft.media.length !== 0 && props.nft.media[0].format !== "mp4") {
         image_url = props.nft.media[0].gateway;
       } else {
         image_url = sample;
@@ -53,7 +53,6 @@ function SwapCatalogue(props) {
           <div className={styles.lowerbox}>
             <div className={styles.lowerboxcontent}>
               <div className={styles.name}>{Truncate(props.nft.title)}</div>
-              {/* <div className={styles.desc}>By Someone</div> */}
               <div className={styles.button} onClick={swapAction}>
                 <button className={styles.bttn}>Select</button>
               </div>

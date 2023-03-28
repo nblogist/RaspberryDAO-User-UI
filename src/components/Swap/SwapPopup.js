@@ -1,7 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./SwapPopup.module.scss";
-import cross from "../../images/Cross.svg";
-import crossd from "../../images/CrossD.svg";
 import Backdrop from "../Backdrop/Backdrop";
 import { ThemeContext } from "../../App";
 import { FcInfo } from "react-icons/fc";
@@ -28,9 +26,6 @@ function SwapPopup(props) {
               style={theme === "dark" ? { color: "black" } : { color: "white" }}
               onClick={props.switch}
             />
-            {/* {
-                            theme === 'dark' ? <img src={crossd} alt="" onClick={props.switch}></img> : <img src={cross} alt="" onClick={props.switch}></img>
-                        } */}
           </div>
           <div className={styles.content}>
             <div>View your Transaction on Explorer</div>
