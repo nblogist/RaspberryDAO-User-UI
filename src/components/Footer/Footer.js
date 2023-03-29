@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.scss";
 import nervos from "../../images/Footer/nervos.svg";
-import Goddwoken from "../../images/Footer/Goddwoken.svg";
+import Godwoken from "../../images/Footer/Godwoken.svg";
 import logo from "../../images/logo.svg";
 import logo1 from "../../images/Footer/1.svg";
 import logo2 from "../../images/Footer/2.svg";
@@ -16,8 +16,8 @@ function Footer() {
           <div className={styles.nervos}>
             <img src={nervos} alt="Nervos"></img>
           </div>
-          <div className={styles.goddwoken}>
-            <img src={Goddwoken} alt="Goddwoken"></img>
+          <div className={styles.Godwoken}>
+            <img src={Godwoken} alt="Godwoken"></img>
           </div>
           <div className={styles.rasp}>
             <img src={logo} alt="Raspberry"></img>
