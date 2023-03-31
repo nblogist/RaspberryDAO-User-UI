@@ -34,7 +34,7 @@ import { useLocation } from "react-router-dom";
 
 const POLYGON_TESTNET_EXPLORER_BASE_URL = "https://polygonscan.com/tx/";
 
-const GODWOKEN_RPC_URL = "https://godwoken-testnet-v1.ckbapp.dev";
+const GODWOKEN_RPC_URL = "https://v1.mainnet.godwoken.io/rpc";
 const godwokenProvider = new ethers.providers.JsonRpcProvider(GODWOKEN_RPC_URL);
 
 function Swap() {
@@ -134,6 +134,7 @@ function Swap() {
     async function fetch() {
       const totalSupply = await godwokenContract.totalSupply();
       const tokenId = Number(totalSupply.toString()) + 1;
+      console.log("Token Id", tokenId.toString());
       const rawUri = `ipfs://QmbHTmDYrtEJXcuJuzhNvp6m2PJexi9KVNweFDZi8Vfmm2/${tokenId}`;
       const Uri = Promise.resolve(rawUri);
       const owner = address;
@@ -175,7 +176,7 @@ function Swap() {
               contract: { address: GODWOKEN_NFTS_ADDRESS },
               tokenUri: { gateway: "" },
             };
-            setGodwokenProbableTitle(name);
+            setGodwokenProbableTitle(updated_name);
           });
         });
         await new Promise((r) => setTimeout(r, 1000));
